@@ -1,0 +1,6 @@
+# Todos os TADS precisam de um CONTADOR pra controlar o tamanho, 
+  diminuindo o custo e aumentado a eficiencia
+
+#Se uma funcao for essecial para o programa, nao podemos retornar ao programa, eh necessario finaliza-lo
+
+#Toda funcao bool utilizamos "is" antes do nome por convensão
