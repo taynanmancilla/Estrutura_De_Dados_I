@@ -4,3 +4,17 @@
 #Se uma funcao for essecial para o programa, nao podemos retornar ao programa, eh necessario finaliza-lo
 
 #Toda funcao bool utilizamos "is" antes do nome por convensão
+
+ALGORITMOS DE ORDENAÇÃO
+
+BubbleSort
+Passa pelo vetor, no minimo n-1 vezes
+
+
+Selection BubbleSort
+
+Usar 50k, 100k e 500k:
+Quantidade de trocas
+Quantidade de vezes que o vetor foi varrido
+Quantidade de comparações
+Tempo de execução
