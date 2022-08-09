@@ -11,10 +11,12 @@ BubbleSort
 Passa pelo vetor, no minimo n-1 vezes
 
 
-Selection BubbleSort
-
-Usar 50k, 100k e 500k:
+BubbleSort
+Usar 100k, 500k e 1M:
 Quantidade de trocas
 Quantidade de vezes que o vetor foi varrido
 Quantidade de comparações
 Tempo de execução
+
+Selection Sort 
+
