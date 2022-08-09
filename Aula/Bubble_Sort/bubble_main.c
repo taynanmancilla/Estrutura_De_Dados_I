@@ -2,9 +2,6 @@
 #include<stdlib.h>
 #include <time.h> // for clock_t, clock(), CLOCKS_PER_SEC
 #include"bubble_sort.h"
-#define C 100000
-#define Q 500000
-#define M 1000000
 
 int main(int argc, char const *argv[]){
 
@@ -12,20 +9,43 @@ int main(int argc, char const *argv[]){
 
     clock_t begin = clock();
 
+    int tecla, TAM;
+    printf("Escolha o tamanho do vetor:\n");
+    printf("DIGITE:\n(1) Vetor de 100k\n(2) Vetor de 500k\n(3) Vetor de 1M\n");
+    scanf("%d", &tecla);
+
+    switch (tecla)
+    {
+    case 1:
+        TAM = 100000;
+        break;
+    case 2:
+        TAM = 500000;
+        break;
+    case 3:
+        TAM = 1000000;
+        break;
     
-    int vetor[C];
-    for(int i=0;i<C; i++){
-        vetor[i] = rand()%C;
+    default:
+        printf("Numero invalido!");
+        break;
     }
 
-    bubble(vetor, C);
-    printVector(vetor, C);
+    printf("Aguarde...");
+
+    int vetor[TAM];
+    for(int i=0;i<TAM; i++){
+        vetor[i] = rand()%TAM;
+    }
+
+    bubble(vetor, TAM);
+    
 
     clock_t end = clock();
 
     tempo_gasto += (double)(end - begin) / CLOCKS_PER_SEC;
 
-    printf("\nTempo total gasto: %fs", tempo_gasto);
+    RecordVector(tempo_gasto);
 
 return 0;
 }

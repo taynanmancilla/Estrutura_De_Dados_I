@@ -17,7 +17,7 @@ void bubble(int vector[], int size)
 {
 
     for(int i=0; i<size-1; i++){
-        for(int j=0; j<size-1; j++){//Melhorar
+        for(int j=0; j<size-1; j++){
 
             if(vector[j] > vector[j+1]){
                 swap(&vector[j], &vector[j+1]);
@@ -26,19 +26,20 @@ void bubble(int vector[], int size)
                     break;
                 }
                 cont_Troca += 1;
-            }
+             }
             cont_Compara +=1;
         }
         cont_Varredura += 1;
     }
 }
 
+void RecordVector(double tempo){
+    FILE *arquivo = fopen("arquivo.txt", "w");
+    if(arquivo == NULL)printf("Erro ao criar o arquivo!");
 
-int printVector(const int *vector, int size){
-    for(int i=0; i<size; i++){
-        printf("|%d", vector[i]);
-    }
-    printf("\nVarredura: %d", cont_Varredura-1);
-    printf("\nTroca: %d", cont_Troca);
-    printf("\nComparacao: %d", cont_Compara);
+    fprintf(arquivo, "\nVarredura: %d", cont_Varredura-1);
+    fprintf(arquivo, "\nTroca: %d", cont_Troca);
+    fprintf(arquivo, "\nComparacao: %d", cont_Compara);
+    fprintf(arquivo, "\nTempo de execucao: %f", tempo);
+    fclose(arquivo);
 }
