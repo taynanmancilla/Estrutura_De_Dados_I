@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include <time.h> // for clock_t, clock(), CLOCKS_PER_SEC
-#include"bubble_sort.h"
+#include<time.h>
+#include"insertion_sort.h"
 
 void run(int *vetor, int size)
 {
@@ -14,14 +14,15 @@ void run(int *vetor, int size)
     for(int i=0;i<size; i++){
         vetor[i] = rand()%99;
     }
-    bubble(vetor, size);
+    selection(vetor, size);
 
     clock_t end = clock();
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    recordBubble(size, time_spent);
+    recordSelection(size, time_spent);
 }
 
-int main(int argc, char const *argv[]){
+
+int main(){
 
     int size = 100000;
     int *vetor;

@@ -2,9 +2,9 @@
 #include<stdlib.h>
 #include"bubble_sort.h"
 
-int cont_Varredura=0;
-int cont_Troca = 0;
-int cont_Compara = 0;
+int soma_varredura=0;
+int soma_troca = 0;
+int soma_comparacao = 0;
 
 void swap(int *a, int *b)
 {
@@ -21,25 +21,27 @@ void bubble(int vector[], int size)
 
             if(vector[j] > vector[j+1]){
                 swap(&vector[j], &vector[j+1]);
-                cont_Varredura = vector[j];
-                if(cont_Varredura == vector[j-1]){
+                soma_varredura = vector[j];
+                if(soma_varredura == vector[j-1]){
                     break;
                 }
-                cont_Troca += 1;
+                soma_troca += 1;
              }
-            cont_Compara +=1;
+            soma_comparacao +=1;
         }
-        cont_Varredura += 1;
+        soma_varredura += 1;
     }
 }
 
-void RecordVector(double tempo){
-    FILE *arquivo = fopen("arquivo.txt", "w");
-    if(arquivo == NULL)printf("Erro ao criar o arquivo!");
+void RecordBubble(double time_spent, int size){
+    FILE *file = fopen("arquivo.txt", "a");
+    if(file == NULL)printf("Erro ao criar o arquivo!");
 
-    fprintf(arquivo, "\nVarredura: %d", cont_Varredura-1);
-    fprintf(arquivo, "\nTroca: %d", cont_Troca);
-    fprintf(arquivo, "\nComparacao: %d", cont_Compara);
-    fprintf(arquivo, "\nTempo de execucao: %f", tempo);
-    fclose(arquivo);
+    fprintf(file, "Vetor de %d posicoes:\n", size);
+    fprintf(file, "Quantidade de Trocas: %d\n", soma_troca);
+    fprintf(file, "Quantidade de Varreduras: %d\n", soma_varredura-1);
+    fprintf(file, "Quantidade de Comparacoes: %d\n", soma_comparacao);
+    fprintf(file, "Tempo de execucao: %.2fs\n\n", time_spent);
+
+    fclose(file);
 }
