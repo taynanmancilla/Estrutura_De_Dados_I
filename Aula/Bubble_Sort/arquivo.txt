@@ -1,5 +1,5 @@
 
-Varredura: 3482
-Troca: 982860284
-Comparacao: -761722458
-Tempo de execucao: 30.448000
+Varredura: 30476
+Troca: -1819356225
+Comparacao: 768650944
+Tempo de execucao: 233.177000
