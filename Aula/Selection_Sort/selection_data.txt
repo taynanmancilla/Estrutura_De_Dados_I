@@ -1,0 +1,18 @@
+
+Vetor de 100000 posicoes:
+Quantidade de Trocas: 98984
+Quantidade de Varreduras: 99999
+Quantidade de Comparacoes: 705082704
+Tempo de execucao: 29.26s
+
+Vetor de 500000 posicoes:
+Quantidade de Trocas: 594094
+Quantidade de Varreduras: 599999
+Quantidade de Comparacoes: 1151281120
+Tempo de execucao: 911.23s
+
+Vetor de 1000000 posicoes:
+Quantidade de Trocas: 1583925
+Quantidade de Varreduras: 1599999
+Quantidade de Comparacoes: -1359392512
+Tempo de execucao: 2754.28s

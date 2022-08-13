@@ -24,9 +24,6 @@ void selection(int *vetor, int size)
         for(int j=i; j<size; j++){
             if(vetor[j] < vetor[menor]){
                 menor = j;
-                /*if(menor == j || menor != j){
-                    soma_comparacao += 1;
-                }*/
             }
             soma_comparacao += 1;
         }
@@ -38,11 +35,15 @@ void selection(int *vetor, int size)
     }   
 }
 
-void printSelection(const int *vetor, int size){
-    for(int i=0; i<size; i++){
-        printf("|%d", vetor[i]);
-    }
-    printf("\nTroca: %d", soma_troca);
-    printf("\nVarredura: %d", soma_varredura-1);
-    printf("\nComparacoes: %d", soma_comparacao);
+void recordSelection(int size, double time_spent){
+    FILE *file = fopen("selection_data.txt", "a");
+    if(file == NULL)printf("Erro ao criar arquivo!");
+
+    fprintf(file, "Vetor de %d posicoes:\n", size);
+    fprintf(file, "Quantidade de Trocas: %d\n", soma_troca);
+    fprintf(file, "Quantidade de Varreduras: %d\n", soma_varredura-1);
+    fprintf(file, "Quantidade de Comparacoes: %d\n", soma_comparacao);
+    fprintf(file, "Tempo de execucao: %.2fs\n\n", time_spent);
+
+    fclose(file);
 }

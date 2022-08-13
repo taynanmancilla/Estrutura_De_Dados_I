@@ -5,17 +5,26 @@
 
 void run(int *vetor, int size)
 {
+    
+    double time_spent = 0.0;
+
+    clock_t begin = clock();
+
     srand(time(NULL));
     for(int i=0;i<size; i++){
         vetor[i] = rand()%99;
     }
     selection(vetor, size);
-    printSelection(vetor, size);
+
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+    recordSelection(size, time_spent);
 }
+
 
 int main(){
 
-    int size = 10;
+    int size = 100000;
     int *vetor;
 
     vetor = (int *)malloc(size*sizeof(int));
@@ -24,19 +33,14 @@ int main(){
         system("pause");
         exit(1);
     }
-    printf("Vetor de %d posicoes:", size);
     run(vetor, size);
 
-    printf("\n\n");
-    size = 50;
+    size = 500000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
-    printf("Vetor de %d posicoes:", size);
     run(vetor, size);
 
-    printf("\n\n");
-    size = 100;
+    size = 1000000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
-    printf("Vetor de %d posicoes:", size);
     run(vetor, size);
 
     free(vetor);
