@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include"insertion_sort.h"
-
+/*
 void run(int *vetor, int size)
 {
     
@@ -19,12 +19,19 @@ void run(int *vetor, int size)
     clock_t end = clock();
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
     recordSelection(size, time_spent);
-}
+}*/
 
 
 int main(){
 
-    int size = 100000;
+    int size = 5;
+    int vetor[] = {23, 4, 67, -8, 21};
+
+    insertion(vetor, size);
+    printInsertion(vetor, size);
+
+
+    /*int size = 100000;
     int *vetor;
 
     vetor = (int *)malloc(size*sizeof(int));
@@ -43,7 +50,7 @@ int main(){
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
 
-    free(vetor);
+    free(vetor);*/
 
 return 0;
 }
