@@ -1,3 +1,3 @@
 void swap(int *a, int *b);
-void bubble(int vector[], int size);
-void RecordVector(double tempo);
+void bubble(int *vector, int size);
+void RecordBubble(double time_spent, int size);

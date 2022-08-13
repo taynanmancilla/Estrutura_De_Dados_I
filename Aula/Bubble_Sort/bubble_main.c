@@ -12,13 +12,13 @@ void run(int *vetor, int size)
 
     srand(time(NULL));
     for(int i=0;i<size; i++){
-        vetor[i] = rand()%99;
+        vetor[i] = rand()%size;
     }
     bubble(vetor, size);
 
     clock_t end = clock();
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    recordBubble(size, time_spent);
+    RecordBubble(time_spent, size);
 }
 
 int main(int argc, char const *argv[]){
@@ -41,7 +41,7 @@ int main(int argc, char const *argv[]){
     size = 1000000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
-
+    
     free(vetor);
 
 return 0;

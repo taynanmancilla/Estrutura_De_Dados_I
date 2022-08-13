@@ -13,7 +13,7 @@ void swap(int *a, int *b)
     *b = aux;
 }
 
-void bubble(int vector[], int size)
+void bubble(int *vector, int size)
 {
 
     for(int i=0; i<size-1; i++){
