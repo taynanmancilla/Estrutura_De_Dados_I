@@ -25,10 +25,18 @@ void run(int *vetor, int size)
 int main(){
 
     int size = 5;
-    int vetor[] = {23, 4, 67, -8, 21};
+    int vetor[]={23,4,67,-8,21};
+    //srand(time(NULL));
+    /*for(int i=0;i<size; i++){
+        vetor[i] = rand()%size;
+    }*/
 
+    for(int i=0; i<size; i++){
+        printf(" %d |", vetor[i]);
+    }
+    printf("\n\n");
     insertion(vetor, size);
-    printInsertion(vetor, size);
+    recordInsertion(vetor, size);
 
 
     /*int size = 100000;
