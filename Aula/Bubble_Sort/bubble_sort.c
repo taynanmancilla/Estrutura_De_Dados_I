@@ -2,9 +2,9 @@
 #include<stdlib.h>
 #include"bubble_sort.h"
 
-int soma_varredura=0;
-int soma_troca = 0;
-int soma_comparacao = 0;
+long int soma_varredura=0;
+long int soma_troca = 0;
+long int soma_comparacao = 0;
 
 void swap(int *a, int *b)
 {
@@ -33,15 +33,18 @@ void bubble(int *vector, int size)
     }
 }
 
-void RecordBubble(double time_spent, int size){
-    FILE *file = fopen("arquivo.txt", "a");
+void RecordBubble(double time_spent, int size)
+{
+
+    FILE *file = fopen("bubble_data.txt", "a");
     if(file == NULL)printf("Erro ao criar o arquivo!");
 
     fprintf(file, "Vetor de %d posicoes:\n", size);
-    fprintf(file, "Quantidade de Trocas: %d\n", soma_troca);
-    fprintf(file, "Quantidade de Varreduras: %d\n", soma_varredura-1);
-    fprintf(file, "Quantidade de Comparacoes: %d\n", soma_comparacao);
+    fprintf(file, "Quantidade de Trocas: %ld\n", soma_troca);
+    fprintf(file, "Quantidade de Varreduras: %ld\n", soma_varredura-1);
+    fprintf(file, "Quantidade de Comparacoes: %ld\n", soma_comparacao);
     fprintf(file, "Tempo de execucao: %.2fs\n\n", time_spent);
 
     fclose(file);
+
 }
