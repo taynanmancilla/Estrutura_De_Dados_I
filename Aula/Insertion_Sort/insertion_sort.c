@@ -12,22 +12,14 @@ void insertion(int*vetor, int size)
     //comparando o valor de uma posicao com os antecessores
     for(i=1; i<size; i++){ 
         
-        //Desloca os valores pra esquerda e insere:
-        //atual = vetor[i];
-        /*for(j=i; j>0; j--){
-            if((atual < vetor[j-1])){
-                vetor[j] = vetor[j-1];
-            }
-            soma_comparacao += 1;
-        }
-        if(vetor[j] != atual)soma_troca += 1;
-        vetor[j] = atual;*/
         atual = vetor[i];
         j = i-1;
-        while(j >= 0 && atual < vetor[j]){ //enquanto atual for menor q o anterior
 
-            vetor[j+1] = vetor[j];
+        
+        while(j >= 0 && atual < vetor[j]){ //enquanto atual for menor q o anterior
             soma_comparacao += 1;
+            vetor[j+1] = vetor[j];
+            
             j--;
             if(j==0)break;
         }

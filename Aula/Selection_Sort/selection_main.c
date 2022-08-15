@@ -12,7 +12,7 @@ void run(int *vetor, int size)
 
     srand(time(NULL));
     for(int i=0;i<size; i++){
-        vetor[i] = rand()%99;
+        vetor[i] = rand()%size;
     }
     selection(vetor, size);
 

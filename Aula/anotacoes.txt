@@ -10,13 +10,19 @@ ALGORITMOS DE ORDENAÇÃO
 BubbleSort
 Passa pelo vetor, no minimo n-1 vezes
 
-
+TRABALHO:
 BubbleSort | SelectionSort | InsertionSort
-Usar vetor de 100k, 500k e 1M gravando em arquivo+:
+Usar vetor de 500, 1000, 10k, 500k e 1M gravando em arquivo:
   Quantidade de trocas
   Quantidade de vezes que o vetor foi varrido
   Quantidade de comparações
   Tempo de execução
+Colocar expecificacoes do computador
+Analise curta pra cada um dos algoritmos
+	Se o vetor tiver ordenado vai ser o melhor ou o pior caso no bagui?Responder isso em kd arquivo
+	Melhor e pior caso
+Conclusao final comparando os algoritmos
+
 
  
 
