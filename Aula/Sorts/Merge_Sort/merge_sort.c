@@ -1,18 +1,20 @@
-/*
-Mudar pra TAD com alocacao dinamica
-Descobrir o erro
-*/
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include"float_vector.h"
 
 int mergesort(int arr[], int inicio, int fim);
 void merge(int arr[], int inicio, int meio, int fim);
 
 int main(){
-    int arr[] = {3, 0, 7, 1, 5, 2, 4, 6};
-
+    int var;
+    FloatVector *arr = create(10);
+    for(int i; i<capacity(arr); i++){
+        var = rand()%10;
+        append(arr, var);
+    }
+    print(arr);
+    
 }
 
 int mergesort(int arr[], int inicio, int fim)
@@ -64,6 +66,4 @@ void merge(int arr[], int inicio, int meio, int fim)
         i++;
         k++;
     }
-
-
 }
