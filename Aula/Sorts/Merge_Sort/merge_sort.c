@@ -2,20 +2,10 @@
 #include<stdlib.h>
 #include<string.h>
 #include"float_vector.h"
+#include"merge_sort.h"
 
-int mergesort(int arr[], int inicio, int fim);
-void merge(int arr[], int inicio, int meio, int fim);
 
-int main(){
-    int var;
-    FloatVector *arr = create(10);
-    for(int i; i<capacity(arr); i++){
-        var = rand()%10;
-        append(arr, var);
-    }
-    print(arr);
-    
-}
+
 
 int mergesort(int arr[], int inicio, int fim)
 {

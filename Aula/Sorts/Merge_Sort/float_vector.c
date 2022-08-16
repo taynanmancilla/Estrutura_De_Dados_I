@@ -76,9 +76,18 @@ void append(FloatVector *vector, float n)
     vector->data[vector->size++] = n;
 }
 
+/*void print(const FloatVector *vector)
+{
+    for(int i=0; i < vector->size; i++){
+        printf("%.2f|", vector->data[i]);
+    }
+}*/
+
 void print(const FloatVector *vector)
 {
-    for(int i; i < vector->size; i++){
-        printf("%d", vector[i]);
+
+    for(int i = 0; i  < vector->size; i++)
+    {
+        printf("[%f]", vector->data[i]);
     }
 }
