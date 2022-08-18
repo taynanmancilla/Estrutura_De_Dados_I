@@ -4,7 +4,7 @@
 #include"float_vector.h"
 #include"merge_sort.h"
 
-int mergesort(FloatVector arr[], int inicio, int fim)
+int mergesort(FloatVector *arr[], int inicio, int fim)
 {
     if(inicio < fim){
 
@@ -17,7 +17,7 @@ int mergesort(FloatVector arr[], int inicio, int fim)
     }
 }
 
-void merge(FloatVector arr[], int inicio, int meio, int fim)
+void merge(FloatVector *arr[], int inicio, int meio, int fim)
 {
     int n1 = meio - inicio + 1; //tamanho do primeiro subvetor
     int n2 = fim - meio;

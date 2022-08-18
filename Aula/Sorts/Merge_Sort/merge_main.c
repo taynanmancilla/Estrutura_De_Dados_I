@@ -5,18 +5,23 @@
 #include"merge_sort.h"
 
 int main(){
-    //int var;
-    FloatVector *arr = create(10);
+    int var, tam=10;
+    FloatVector *arr = create(tam);
+
     for(int i=0; i<capacity(arr); i++){
-        int var = rand()%10;
+        var = rand()%10;
         append(arr, var);
     }
     print(arr);
 
-int inicio = get(arr, 0);
-int fim = get(arr, size(arr));
+    int inicio = at(arr, 0);
 
-mergesort(*arr, inicio, fim);
+    int fim = at(arr, tam-1);
+    printf("\nInicio: %d", inicio);
+    printf("\nFim: %d", fim);
 
+/*
+mergesort(arr, inicio, fim);
+*/
 return 0;
 }
