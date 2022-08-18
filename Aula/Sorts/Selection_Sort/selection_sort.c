@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #include"selection_sort.h"
 
-
 int soma_troca;
 int soma_varredura;
 int soma_comparacao;
@@ -13,7 +12,6 @@ void swap(int *a, int *b)
     *a = *b;
     *b = aux;
 }
- 
 
 void selection(int *vetor, int size)
 {

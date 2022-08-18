@@ -24,7 +24,7 @@ void run(int *vetor, int size)
 
 int main(){
 
-    int size = 100000;
+    int size = 500;
     int *vetor;
 
     vetor = (int *)malloc(size*sizeof(int));
@@ -33,6 +33,14 @@ int main(){
         system("pause");
         exit(1);
     }
+    run(vetor, size);
+
+    size = 1000;
+    vetor = (int *)realloc(vetor, size*sizeof(int));
+    run(vetor, size);
+
+    size = 10000;
+    vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
 
     size = 500000;

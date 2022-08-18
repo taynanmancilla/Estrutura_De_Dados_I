@@ -1,0 +1,4 @@
+Bubble sort e um algoritmo simples de facil entendimento e implementacao,  no entanto, 
+nao e um algoritmo eficaz pois sua enficiencia diminui radicalmente conforme aumenta o numero de elementos no array.
+Seu melhor caso e quando os elementos ja estao ordenados.
+Ja seu pior caso e quando os elementos estao ordenados em ordem inversa.
