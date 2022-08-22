@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include"insertion_sort.h"
-/*
+
 void run(int *vetor, int size)
 {
     
@@ -14,32 +14,34 @@ void run(int *vetor, int size)
     for(int i=0;i<size; i++){
         vetor[i] = rand()%99;
     }
-    selection(vetor, size);
-
-    clock_t end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    recordSelection(size, time_spent);
-}*/
-
-
-int main(){
-
-    int size = 5;
-    int vetor[]={23,4,67,-8,21};
-    //srand(time(NULL));
-    /*for(int i=0;i<size; i++){
-        vetor[i] = rand()%size;
-    }*/
 
     for(int i=0; i<size; i++){
         printf(" %d |", vetor[i]);
     }
     printf("\n\n");
+
     insertion(vetor, size);
+
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
     recordInsertion(vetor, size);
+}
 
 
-    /*int size = 100000;
+int main(){
+/*
+    int size = 100;
+    srand(time(NULL));
+    for(int i=0;i<size; i++){
+        vetor[i] = rand()%size;
+    }
+
+    for(int i=0; i<size; i++){
+        printf(" %d |", vetor[i]);
+    }
+    printf("\n\n");*/
+
+    int size = 5;
     int *vetor;
 
     vetor = (int *)malloc(size*sizeof(int));
@@ -48,13 +50,15 @@ int main(){
         system("pause");
         exit(1);
     }
-    run(vetor, size);
 
+
+    run(vetor, size);
+/*
     size = 500000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
 
-    size = 1000000;
+    size = 1000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
 

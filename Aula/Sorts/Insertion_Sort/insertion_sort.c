@@ -10,22 +10,15 @@ void insertion(int*vetor, int size)
 {
     int i, j, atual;
     //comparando o valor de uma posicao com os antecessores
-    for(i=1; i<size; i++){ 
-        
-        atual = vetor[i];
-        j = i-1;
 
-        
-        while(j >= 0 && atual < vetor[j]){ //enquanto atual for menor q o anterior
+    for(i=1; i<size; i++){
+        atual = vetor[i];
+        for(j = i; (j>0)&&(atual<vetor[j-1]); j--){
             soma_comparacao += 1;
-            vetor[j+1] = vetor[j];
-            
-            j--;
-            if(j==0)break;
+            vetor[j] = vetor[j-1];
         }
         if(vetor[j] != atual)soma_troca += 1;
-        vetor[j+1] = atual;
-
+        vetor[j] = atual;
         soma_varredura += 1;
     }
 }
