@@ -22,7 +22,7 @@ void run(int *vetor, int size)
 }
 
 
-int main(){
+int main(int argc, char const *argv[]){
 
     int size = 500;
     int *vetor;

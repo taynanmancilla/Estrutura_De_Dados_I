@@ -1,0 +1,13 @@
+Selection sort e um algoritmo que divide o array em duas partes:
+A parte ordenada que fica a esquerda do elemento analisado e a 
+parte que ainda nao foi ordenada que fica a direita desse elemento.
+Pra cada elemento do array ele procura o menor valor a sua direita
+e troca os dois valores de lugar.
+Por esse algoritmo sempre comparar um elemento com os outros
+a cada iteracao procurando o menor, nao existe um melhor caso
+pois mesmo o vetor estando ordenado ou em ordem inversa,
+sempre vai ser executado os dois lacos do algoritmo. Tambem
+sendo muito lento para vetores grandes.
+No entanto, por nao necessitar de um vetor auxiliar pra realizar a 
+ordenacao, ele ocupa menos memoria e e extremamente rapido
+na ordenacao de vetores pequenos.

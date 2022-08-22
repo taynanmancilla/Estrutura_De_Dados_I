@@ -41,7 +41,7 @@ void recordSelection(int size, double time_spent){
     fprintf(file, "Quantidade de Trocas: %d\n", soma_troca);
     fprintf(file, "Quantidade de Varreduras: %d\n", soma_varredura-1);
     fprintf(file, "Quantidade de Comparacoes: %d\n", soma_comparacao);
-    fprintf(file, "Tempo de execucao: %.2fs\n\n", time_spent);
+    fprintf(file, "Tempo de execucao: %.4fs\n\n", time_spent);
 
     fclose(file);
 }
