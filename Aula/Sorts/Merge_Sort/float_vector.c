@@ -15,7 +15,7 @@ bool _isFull(const FloatVector *vector)
 {
     return vector->size == vector->capacity;
 }
-/*
+
 /**
     * @brief Cria (aloca) um vetor de float com uma dada capacidade
     * 
@@ -90,4 +90,9 @@ void print(const FloatVector *vector)
     {
         printf("| %.0f |", vector->data[i]);
     }
+}
+
+void inserejossa(const FloatVector *vector, int index, float n)
+{
+    vector->data[index] = n;
 }

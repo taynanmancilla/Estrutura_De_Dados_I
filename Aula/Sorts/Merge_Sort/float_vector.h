@@ -13,6 +13,7 @@ float at(const FloatVector *vector, int pos); //retorna o valor dentro de uma po
 float get(const FloatVector *vector, int index);
 void append(FloatVector *vector, float n); //inserir algo dentro do vetor
 void print(const FloatVector *vector);
+void inserejossa(const FloatVector *vector, int index, float n);
 
 // ----- PODERIA EXISTIR -----
 /*
