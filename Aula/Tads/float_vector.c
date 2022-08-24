@@ -1,34 +1,44 @@
-// ARQUIVO DE IMPLEMENTACOES
+//ARQUIVOS .h - ARQUIVO DE IMPLEMENTACOES
+/*
+Aplicacao das funcoes
+*/
+
 #include "float_vector.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
 
+//########## INTERFACE PRIVADA #############
+
 struct float_vector
 {
     int capacity;   // Numero maximo de elementos
-    int size;       // Quantidade atual de elementos
+    int size;       // Quantidade atual de elementos armazenados atualmente
     float *data;    // Vetor de floats
 };
 
+//Funcao Privada - Nao esta disponivel para os usuarios/programas,
+//ou outros arquivos que usam o float_vector.h
 bool _isFull(const FloatVector *vector)
 {
     return vector->size == vector->capacity;
 }
 
+//########## IMPLEMENTACAO DA INTERFACE PUBLICA
+
 /**
     * @brief Cria (aloca) um vetor de float com uma dada capacidade
     * 
     * @param tam Capacidade do vetor 
-    * @return FloatVector* ponteiro de um vetor de floats
+    * @return FloatVector* Um vetor de floats alocado/criado
 */
 
 FloatVector *create(int tam)
 {
-    FloatVector *vet = (FloatVector *)calloc(1, sizeof(FloatVector));
+    FloatVector *vet = (FloatVector *)calloc(1, sizeof(FloatVector)); //Criando uma estrutura de floatvector
     vet->capacity = tam;
-    vet->size = 0;
-    vet->data = (float *)calloc(vet->capacity, sizeof(float));
+    vet->size = 0; //Tamanho inicial eh zero(nenhum elemento inserido no vetor)
+    vet->data = (float *)calloc(vet->capacity, sizeof(float)); //Alocando um vetor de float de tamanho 'tam'
 
     return vet; //retornando poteiro de criacao da estrutura
 }
@@ -70,15 +80,28 @@ float get(const FloatVector *vector, int index)
 void append(FloatVector *vector, float n)
 {
     if(_isFull(vector)){
-        fprintf(stderr, "Error in append\nVector is full!");
-        exit(EXIT_FAILURE);
+        fprintf(stderr, "ERROR in 'append'\nVector is full!"); //STDERR = Saida padrao de erro
+        exit(EXIT_FAILURE); //EXIT_FAILURE = Macro que indica que estamos saindo do programa com uma falha
     }
     vector->data[vector->size++] = n;
 }
 
+void set(const FloatVector *vector, int index, float n)
+{
+    if(index < 0 || index >= vector->size){
+        fprintf(stderr, "ERROR in 'set'\n");
+        fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vector->size-1);
+        exit(EXIT_FAILURE);
+    }
+    vector->data[index] = n;
+}
+
 void print(const FloatVector *vector)
 {
-    for(int i; i < size; i++){
-        printf("%d", vector[i]);
+    printf("Size: %d\n", vector->size);
+    printf("Capacity: %d\n", vector->capacity);
+    printf("-----\n");
+    for(int i=0; i < vector->size; i++){
+        printf("|%d| - %.2f\n", i, vector->data[i]);
     }
 }
