@@ -15,18 +15,17 @@ void swap(int *a, int *b)
 
 void bubble(int *vector, int size)
 {
-
+    int controle=0;
     for(int i=0; i<size-1; i++){
         for(int j=0; j<size-1; j++){
-
             if(vector[j] > vector[j+1]){
                 swap(&vector[j], &vector[j+1]);
-                soma_varredura = vector[j];
-                if(soma_varredura == vector[j-1]){
+                controle = vector[j];
+                if(controle == vector[j-1]){
                     break;
                 }
                 soma_troca += 1;
-             }
+            }
             soma_comparacao +=1;
         }
         soma_varredura += 1;
@@ -43,7 +42,7 @@ void RecordBubble(double time_spent, int size)
     fprintf(file, "Quantidade de Trocas: %ld\n", soma_troca);
     fprintf(file, "Quantidade de Varreduras: %ld\n", soma_varredura-1);
     fprintf(file, "Quantidade de Comparacoes: %ld\n", soma_comparacao);
-    fprintf(file, "Tempo de execucao: %.2fs\n\n", time_spent);
+    fprintf(file, "Tempo de execucao: %.4fs\n\n", time_spent);
 
     fclose(file);
 

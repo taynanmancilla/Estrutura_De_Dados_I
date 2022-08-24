@@ -33,6 +33,9 @@ int main(int argc, char const *argv[]){
         exit(1);
     }
     run(vetor, size);
+   /* for(int i=0; i<size; i++){
+        printf("  %d  |", vetor[i]);
+    }*/
 
     size = 1000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
@@ -49,7 +52,7 @@ int main(int argc, char const *argv[]){
     size = 1000000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
-    
+
     free(vetor);
 
 return 0;
