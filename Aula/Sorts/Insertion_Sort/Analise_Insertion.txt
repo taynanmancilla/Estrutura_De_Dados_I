@@ -1,0 +1,3 @@
+O algoritmo Insertion Sort tem como seu melhor caso os elementos ja ordenados e como 
+pior caso os elementos ordenados em ordem inversa tendo em vista que eh feito uma
+analise de elemente em elemento antes de inserir o elemento em uma posicao.

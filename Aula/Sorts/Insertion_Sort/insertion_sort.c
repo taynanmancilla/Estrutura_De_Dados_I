@@ -9,8 +9,8 @@ int soma_comparacao = 0;
 void insertion(int*vetor, int size)
 {
     int i, j, atual;
-    //comparando o valor de uma posicao com os antecessores
 
+    //comparando o valor de uma posicao com os antecessores
     for(i=1; i<size; i++){
         atual = vetor[i];
         for(j = i; (j>0)&&(atual<vetor[j-1]); j--){
@@ -23,24 +23,18 @@ void insertion(int*vetor, int size)
     }
 }
 
-void recordInsertion(int *vetor, int size)
+void recordInsertion(int *vetor, int size, double time_spent)
 {
-    for(int i=0; i<size; i++){
-        printf(" %d |", vetor[i]);
-    }
-    printf("\nQuantidade de Trocas: %d\n", soma_troca);
-    printf("Quantidade de Varreduras: %d\n", soma_varredura);
-    printf("Quantidade de Comparacoes: %d\n", soma_comparacao);
 
-    /*FILE *file = fopen("insertion_data.txt", "a");
+    FILE *file = fopen("insertion_data.txt", "a");
     if(file == NULL)printf("Erro ao criar o arquivo!");
 
     fprintf(file, "Vetor de %d posicoes:\n", size);
     fprintf(file, "Quantidade de Trocas: %d\n", soma_troca);
     fprintf(file, "Quantidade de Varreduras: %d\n", soma_varredura);
     fprintf(file, "Quantidade de Comparacoes: %d\n", soma_comparacao);
-    //fprintf(file, "Tempo de Execucao: %.2f\n\n", time_spent);*/
+    fprintf(file, "Tempo de Execucao: %.6f\n\n", time_spent);
 
-    //fclose(file);
+    fclose(file);
 
 }
