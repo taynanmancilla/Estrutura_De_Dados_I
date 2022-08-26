@@ -3,27 +3,24 @@
 #include<string.h>
 #include<time.h>
 #include"float_vector.h"
-#include"merge_sort.h"
 
-int main(){
-    int var, tam=10;
-    FloatVector *arr = create(tam);
+int main() { 
 
-    srand(time(NULL));
-    for(int i=0; i<capacity(arr); i++){
-        var = rand()%10;
-        append(arr, var);
-    }
-    print(arr);
+   int size=10;
+   FloatVector *vector = create(size);
 
-    int inicio = at(arr, 0);
+   printf("\nList before sorting\n");
+   srand(time(NULL));
+   for(int i=0; i<size; i++){
+        int v = rand()%10;
+        append(vector, v);
+   }
+   print(vector);
 
-    int fim = at(arr, tam-1);
+   mergesort(vector, 0, size-1);
 
-    printf("\n\n");
-
-    mergesort(arr, inicio, fim);
-    print(arr);
+   printf("\nList after sorting\n");
+   print(vector);
 
 return 0;
 }

@@ -1,25 +1,18 @@
-//ARQUIVOS .h - ARQUIVO DE ESPECIFICACOES
-/*
-Disponibilizamos as funcoes
-*/
+//ARQUIVO DE ESPECIFICACOES
 
-typedef struct float_vector FloatVector; //TAD
 
-FloatVector *create(int tam);
-void destroy(FloatVector **ref_vector);
-int size(const FloatVector *vector); //funcao q retorna o tamanho
-int capacity(const FloatVector *vector);
-float at(const FloatVector *vector, int pos); //retorna o valor dentro de uma posicao no vetor
-float get(const FloatVector *vector, int index);
-void append(FloatVector *vector, float n); //inserir algo dentro do vetor
-void print(const FloatVector *vector);
-void inserejossa(const FloatVector *vector, int index, float n);
+typedef struct float_vector FloatVector;
 
-// ----- PODERIA EXISTIR -----
-/*
-bool compare(FloatVector*, FloatVector*); //comparar duas TADS
-void split(FloatVector*, FloatVector*); //separar duas TADS
-void join(FloatVector*, FloatVector*); //concatenar duas TADS
-bool isfull(FloatVector);
-*/
+FloatVector *create(int tam); // Criar um vetor do tipo FloatVector
+void destroy(FloatVector **ref_vector); // Excluindo o vetor
+int size(const FloatVector *vector); // Retornar a quantidade atual de elementos
+int capacity(const FloatVector *vector); // Retornar a capacidade maxima de elementos
+float at(const FloatVector *vector, int pos); // Retornar o valor dentro de um indice no vetor COM tratamento de erro
+float get(const FloatVector *vector, int index); // Retornar o valor dentro de um indice no vetor SEM tratamento de erro
+void append(FloatVector *vector, float n); // Inserir um valor no fim do vetor
+void print(const FloatVector *vector); // Imprimir o vetor
+void set(const FloatVector *vector, int index, float n); // Inserir um valor em um determinado indice
 
+
+void mergesort(FloatVector *vector, int inicio, int fim);
+void merge(FloatVector *vector, int inicio, int meio, int fim);

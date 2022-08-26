@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<time.h>
 
 struct float_vector
 {
@@ -76,23 +77,84 @@ void append(FloatVector *vector, float n)
     vector->data[vector->size++] = n;
 }
 
-/*void print(const FloatVector *vector)
-{
-    for(int i=0; i < vector->size; i++){
-        printf("%.2f|", vector->data[i]);
-    }
-}*/
-
 void print(const FloatVector *vector)
 {
-
     for(int i = 0; i  < vector->size; i++)
     {
         printf("| %.0f |", vector->data[i]);
     }
 }
 
-void inserejossa(const FloatVector *vector, int index, float n)
+void set(const FloatVector *vector, int index, float n)
 {
+    if(index < 0 || index >= vector->size){
+        fprintf(stderr, "ERROR in 'set'\n");
+        fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vector->size-1);
+        exit(EXIT_FAILURE);
+    }
     vector->data[index] = n;
+}
+
+
+void merge(FloatVector *vector, int inicio, int meio, int fim)
+{
+   int i, j, k;
+   //Inicio de cada vetor auxiliar
+   int pL = meio - inicio + 1;
+   int pR = fim - meio;
+ 
+   int left[pL], right[pR];// Vetores auxiliares (esquerda e direita)
+   //Atribundo os valores dos vetores auxiliares
+   for(i = 0; i < pL; i++){
+      //left[i] = vector[inicio+i];
+      left[i] = at(vector, inicio+1);
+   }
+   for(j = 0; j < pR; j++){
+      //right[j] = vector[meio+1+j];
+      right[j] = at(vector, meio+1+j);
+   }
+
+   //Atribuindo o menor dos dois auxiliares no vetor principal:
+   i=0, j=0;
+   k = inicio;
+   while(i < pL && j < pR){
+      if (left[i] <= right[j]) {
+        //vector[k] = left[i];
+        set(vector, k, left[i]);
+        i++;
+      }else{
+        //vector[k] = right[j];
+        set(vector, k, right[j]);
+        j++;
+      }
+      k++;
+   }
+
+   //Quando um dos vetores acaba, nao precisamos continuar comparando
+   //simplesmente copiamos o que sobrou pro final do auxiliar:
+    while(i < pL){
+    //vector[k] = left[i];
+        set(vector, k, left[i]);
+        i++;
+        k++;
+    }
+    while(j < pR){
+        //vector[k] = right[j];
+        set(vector, k, right[j]);
+        j++;
+        k++;
+   }
+}
+
+void mergesort(FloatVector *vector, int inicio, int fim)
+{
+   if(inicio < fim) {
+      //Calculando a metade
+      int meio = inicio+(fim - inicio) / 2;
+      //Chamando a funcao pras duas metades
+      mergesort(vector, inicio, meio);
+      mergesort(vector, meio+1, fim);
+      //Combinando 2 metades de forma ordenada
+      merge(vector, inicio, meio, fim);
+   }
 }
