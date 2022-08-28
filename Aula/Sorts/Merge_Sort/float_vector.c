@@ -107,11 +107,13 @@ void merge(FloatVector *vector, int inicio, int meio, int fim)
    //Atribundo os valores dos vetores auxiliares
    for(i = 0; i < pL; i++){
       //left[i] = vector[inicio+i];
-      left[i] = at(vector, inicio+1);
+      //left[i] = at(vector, inicio+1);
+        left[i] = vector->data[inicio+1];
    }
    for(j = 0; j < pR; j++){
       //right[j] = vector[meio+1+j];
-      right[j] = at(vector, meio+1+j);
+      //right[j] = at(vector, meio+1+j);
+        right[j] = vector->data[meio+1+j];
    }
 
    //Atribuindo o menor dos dois auxiliares no vetor principal:
@@ -120,11 +122,13 @@ void merge(FloatVector *vector, int inicio, int meio, int fim)
    while(i < pL && j < pR){
       if (left[i] <= right[j]) {
         //vector[k] = left[i];
-        set(vector, k, left[i]);
+        //set(vector, k, left[i]);
+        vector->data[k] = left[i];
         i++;
       }else{
         //vector[k] = right[j];
-        set(vector, k, right[j]);
+        //set(vector, k, right[j]);
+        vector->data[k] =right[j];
         j++;
       }
       k++;
@@ -133,14 +137,16 @@ void merge(FloatVector *vector, int inicio, int meio, int fim)
    //Quando um dos vetores acaba, nao precisamos continuar comparando
    //simplesmente copiamos o que sobrou pro final do auxiliar:
     while(i < pL){
-    //vector[k] = left[i];
-        set(vector, k, left[i]);
+        //vector[k] = left[i];
+        //set(vector, k, left[i]);
+        vector->data[k] = left[i];
         i++;
         k++;
     }
     while(j < pR){
         //vector[k] = right[j];
-        set(vector, k, right[j]);
+        //set(vector, k, right[j]);
+        vector->data[k] = right[j];
         j++;
         k++;
    }

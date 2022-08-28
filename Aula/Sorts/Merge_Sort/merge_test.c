@@ -122,6 +122,8 @@ void mergesort(int *vector, int inicio, int fim)
    }
 }
 
+
+//minha:
 int main() { 
 
    int size=10, vector[size];
@@ -130,7 +132,7 @@ int main() {
    srand(time(NULL));
    for(int i=0; i<size; i++){
         vector[i] = rand()%10;
-      printf(" %d |", vector[i]);
+      printf("%d |", vector[i]);
    }
 
    mergesort(vector, 0, size-1);

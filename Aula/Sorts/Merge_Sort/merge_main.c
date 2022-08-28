@@ -12,12 +12,12 @@ int main() {
    printf("\nList before sorting\n");
    srand(time(NULL));
    for(int i=0; i<size; i++){
-        int v = rand()%10;
+        float v = rand()%size;
         append(vector, v);
    }
    print(vector);
 
-   mergesort(vector, 0, size-1);
+   mergesort(vector, 0, size);
 
    printf("\nList after sorting\n");
    print(vector);
