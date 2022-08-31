@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include"bubble_sort.h"
 
-long int soma_varredura=0;
+long int soma_varredura = 0;
 long int soma_troca = 0;
 long int soma_comparacao = 0;
 
@@ -15,19 +15,23 @@ void swap(int *a, int *b)
 
 void bubble(int *vector, int size)
 {
-    int controle=0;
-    for(int i=0; i<size-1; i++){
-        for(int j=0; j<size-1; j++){
+soma_varredura = 0;
+soma_troca = 0;
+soma_comparacao = 0;
+    int controle=0, c=0;
+    for(int i=0; i<size; i++){
+        do{
+        c = 0;
+        for(int j=0; j<size; j++){
             if(vector[j] > vector[j+1]){
                 swap(&vector[j], &vector[j+1]);
                 controle = vector[j];
-                if(controle == vector[j-1]){
-                    break;
-                }
                 soma_troca += 1;
+                c = 1;
             }
             soma_comparacao +=1;
         }
+        }while(c==1);
         soma_varredura += 1;
     }
 }

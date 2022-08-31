@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include <time.h> // for clock_t, clock(), CLOCKS_PER_SEC
+#include <time.h>
 #include"bubble_sort.h"
 
 void run(int *vetor, int size)
@@ -23,7 +23,7 @@ void run(int *vetor, int size)
 
 int main(int argc, char const *argv[]){
 
-    int size = 500;
+    int size = 1000000;
     int *vetor;
 
     vetor = (int *)malloc(size*sizeof(int));
@@ -33,10 +33,7 @@ int main(int argc, char const *argv[]){
         exit(1);
     }
     run(vetor, size);
-   /* for(int i=0; i<size; i++){
-        printf("  %d  |", vetor[i]);
-    }*/
-
+/*
     size = 1000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
@@ -52,7 +49,7 @@ int main(int argc, char const *argv[]){
     size = 1000000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
-
+*/
     free(vetor);
 
 return 0;
