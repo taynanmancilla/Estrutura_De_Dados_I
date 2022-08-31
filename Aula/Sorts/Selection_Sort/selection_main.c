@@ -24,7 +24,7 @@ void run(int *vetor, int size)
 
 int main(int argc, char const *argv[]){
 
-    int size = 500;
+    int size = 1000000;
     int *vetor;
 
     vetor = (int *)malloc(size*sizeof(int));
@@ -34,7 +34,7 @@ int main(int argc, char const *argv[]){
         exit(1);
     }
     run(vetor, size);
-
+/*
     size = 1000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
@@ -50,7 +50,7 @@ int main(int argc, char const *argv[]){
     size = 1000000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
-
+*/
     free(vetor);
 
 return 0;

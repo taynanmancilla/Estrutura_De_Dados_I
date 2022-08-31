@@ -15,9 +15,10 @@ void swap(int *a, int *b)
 
 void selection(int *vetor, int size)
 {
-
+    soma_troca=0;
+    soma_varredura=0;
+    soma_comparacao=0;
     for(int i=0; i<size; i++){
-
         int menor = i; //armazenando apenas o indice
         for(int j=i; j<size; j++){
             if(vetor[j] < vetor[menor]){
