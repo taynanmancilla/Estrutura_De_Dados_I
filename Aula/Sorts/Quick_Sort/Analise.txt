@@ -1,0 +1,7 @@
+O melhor caso ocorre quando as particoes possue sempre o mesmo tamanho,
+ou seja, estao sempre balanceadas (NlogN)
+
+O pior caso ocorre quando a funcao de particao calcula um pivo que divide o array de N elementos em dois:
+uma particao com N-1 elementos e outra com 0 elementos.
+Nesse caso teremos um particionamento nao balanceado. Quando isso acontece a cada nivel da recursao 
+temos um tempo de execucao o(N^2)
