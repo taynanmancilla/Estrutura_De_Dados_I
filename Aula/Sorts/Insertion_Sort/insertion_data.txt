@@ -1,30 +1,31 @@
+
+
 Vetor de 500 posicoes:
-Quantidade de Trocas: 486
+Quantidade de Trocas: 495
 Quantidade de Varreduras: 499
-Quantidade de Comparacoes: 59289
-Tempo de Execucao: 0.000000
+Quantidade de Comparacoes: 60189
+Tempo de Execucao: 0.001000
 
 Vetor de 1000 posicoes:
-Quantidade de Trocas: 1470
-Quantidade de Varreduras: 1498
-Quantidade de Comparacoes: 301579
+Quantidade de Trocas: 995
+Quantidade de Varreduras: 999
+Quantidade de Comparacoes: 248590
 Tempo de Execucao: 0.001000
 
 Vetor de 10000 posicoes:
-Quantidade de Trocas: 11359
-Quantidade de Varreduras: 11497
-Quantidade de Comparacoes: 24935181
-Tempo de Execucao: 0.217000
+Quantidade de Trocas: 9989
+Quantidade de Varreduras: 9999
+Quantidade de Comparacoes: 25299952
+Tempo de Execucao: 0.175000
 
 Vetor de 500000 posicoes:
-Quantidade de Trocas: 506279
-Quantidade de Varreduras: 511496
-Quantidade de Comparacoes: 1750780503
-Tempo de Execucao: 515.784000
+Quantidade de Trocas: 499967
+Quantidade de Varreduras: 499999
+Quantidade de Comparacoes: -1840803247
+Tempo de Execucao: 496.429000
 
 Vetor de 1000000 posicoes:
-Quantidade de Trocas: 1496371
-Quantidade de Varreduras: 1511495
-Quantidade de Comparacoes: 280029967
-Tempo de Execucao: 1951.680000
-
+Quantidade de Trocas: 999952
+Quantidade de Varreduras: 999999
+Quantidade de Comparacoes: 829470581
+Tempo de Execucao: 2550.811000

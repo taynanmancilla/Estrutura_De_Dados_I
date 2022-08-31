@@ -9,8 +9,10 @@ int soma_comparacao = 0;
 void insertion(int*vetor, int size)
 {
     int i, j, atual;
+    soma_troca = 0;
+    soma_varredura = 0;
+    soma_comparacao = 0;
 
-    //comparando o valor de uma posicao com os antecessores
     for(i=1; i<size; i++){
         atual = vetor[i];
         for(j = i; (j>0)&&(atual<vetor[j-1]); j--){

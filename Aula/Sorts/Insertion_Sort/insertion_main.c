@@ -12,7 +12,7 @@ void run(int *vetor, int size)
 
     srand(time(NULL));
     for(int i=0;i<size; i++){
-        vetor[i] = rand()%99;
+        vetor[i] = rand()%size;
     }
 
     insertion(vetor, size);
@@ -51,7 +51,6 @@ int main(){
     size = 1000000;
     vetor = (int *)realloc(vetor, size*sizeof(int));
     run(vetor, size);
-
 
     free(vetor);
 
