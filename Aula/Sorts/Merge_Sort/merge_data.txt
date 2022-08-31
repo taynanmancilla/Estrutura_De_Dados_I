@@ -1,0 +1,15 @@
+
+Vetor de 500 posicoes:
+Tempo de Execucao: 0.0000000000
+
+Vetor de 1000 posicoes:
+Tempo de Execucao: 0.0000000000
+
+Vetor de 10000 posicoes:
+Tempo de Execucao: 0.0040000000
+
+Vetor de 500000 posicoes:
+Tempo de Execucao: 0.1770000000
+
+Vetor de 1000000 posicoes:
+Tempo de Execucao: 25.1260000000

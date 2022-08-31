@@ -4,23 +4,51 @@
 #include<time.h>
 #include"float_vector.h"
 
-int main() { 
+void run(FloatVector *vetor, int size)
+{
+    
+    double time_spent = 0.0;
 
-   int size=10;
-   FloatVector *vector = create(size);
+    clock_t begin = clock();
 
-   printf("\nList before sorting\n");
    srand(time(NULL));
    for(int i=0; i<size; i++){
         float v = rand()%size;
-        append(vector, v);
+        append(vetor, v);
    }
-   print(vector);
+   mergesort(vetor, 0, size);
 
-   mergesort(vector, 0, size);
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+   recordMerge(size, time_spent);
+}
 
-   printf("\nList after sorting\n");
-   print(vector);
+int main() { 
 
+   int size = 1000000;
+   FloatVector *vector = create(size);
+   run(vector, size);
+   free(vector);
+/*
+   int size = 1000;
+   FloatVector *vector = create(size);
+   run(vector, size);
+   free(vector);
+
+   int size = 10000;
+   FloatVector *vector = create(size);
+   run(vector, size);
+   free(vector);
+
+   int size = 500000;
+   FloatVector *vector = create(size);
+   run(vector, size);
+   free(vector);
+
+   int size = 1000000;
+   FloatVector *vector = create(size);
+   run(vector, size);
+   free(vector);
+*/
 return 0;
 }

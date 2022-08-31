@@ -103,7 +103,8 @@ void merge(FloatVector *vector, int inicio, int meio, int fim)
    int pL = meio - inicio + 1;
    int pR = fim - meio;
  
-   int left[pL], right[pR];// Vetores auxiliares (esquerda e direita)
+   float left[pL], right[pR];// Vetores auxiliares (esquerda e direita)
+
    //Atribundo os valores dos vetores auxiliares
    for(i = 0; i < pL; i++){
       //left[i] = vector[inicio+i];
@@ -163,4 +164,17 @@ void mergesort(FloatVector *vector, int inicio, int fim)
       //Combinando 2 metades de forma ordenada
       merge(vector, inicio, meio, fim);
    }
+}
+
+void recordMerge(int size, double time_spent)
+{
+
+    FILE *file = fopen("merge_data.txt", "a");
+    if(file == NULL)printf("Erro ao criar o arquivo!");
+
+    fprintf(file, "Vetor de %d posicoes:\n", size);
+    fprintf(file, "Tempo de Execucao: %.10f\n\n", time_spent);
+
+    fclose(file);
+
 }

@@ -16,3 +16,4 @@ void set(const FloatVector *vector, int index, float n); // Inserir um valor em 
 
 void mergesort(FloatVector *vector, int inicio, int fim);
 void merge(FloatVector *vector, int inicio, int meio, int fim);
+void recordMerge(int size, double time_spent);
