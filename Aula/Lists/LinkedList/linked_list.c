@@ -27,3 +27,10 @@ LinkedList *create()
 
     return lista;
 }
+
+void Add_First(LinkedList *lista, int val)
+{
+        Node *p = Node_Create(val); // Criando um No P que recebe o valor VAL
+        p->next = lista->begin; // No P aponta onde o Inicio da lista esta apontando
+        lista->begin = p; // Inicio aponta pro P
+}
