@@ -20,7 +20,7 @@ Node *Node_Create(int val)
     return node;
 }
 
-LinkedList *create()
+LinkedList *List_Create()
 {
     LinkedList *lista = (LinkedList*)calloc(1, sizeof(LinkedList)); // Alocando a lista dinamicamente
     lista->begin = NULL; // Atribuindo Nulo ao ponteiro pro inicio de uma lista recem criada
@@ -33,4 +33,16 @@ void Add_First(LinkedList *lista, int val)
         Node *p = Node_Create(val); // Criando um No P que recebe o valor VAL
         p->next = lista->begin; // No P aponta onde o Inicio da lista esta apontando
         lista->begin = p; // Inicio aponta pro P
+}
+
+void print(const LinkedList *lista)
+{
+    Node *p = lista->begin;
+    printf("Lista -> ");
+    //Enquanto P apontar para um no existente
+    while(p != NULL){
+        printf("%d -> ", p->val);
+        p = p->next;
+    }
+    printf("NULL\n");
 }
