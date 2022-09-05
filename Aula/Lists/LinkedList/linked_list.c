@@ -9,6 +9,7 @@ typedef struct _node{
 
 typedef struct _Linked_list{
     Node *begin;
+    Node *end;
 } LinkedList;
 
 Node *Node_Create(int val)
@@ -35,13 +36,30 @@ void Add_First(LinkedList *lista, int val)
         lista->begin = p; // Inicio aponta pro P
 }
 
+void add(LinkedList *lista, int val)
+{
+    Node *new = Node_Create(val);
+    //Se a lista estiver vazia
+    if(lista->begin == NULL){
+        lista->begin = new;
+    }else{
+        Node *p = lista->begin;
+        //Enquanto houver um proximo No
+        while(p->next != NULL){
+            p = p->next;
+        }
+        // Na saida do laco P sera o ultimo No, logo jogamos o apontamento para o novo ultimo no
+        p->next = new;
+    }
+}
+
 void print(const LinkedList *lista)
 {
     Node *p = lista->begin;
     printf("Lista -> ");
     //Enquanto P apontar para um no existente
     while(p != NULL){
-        printf("%d -> ", p->val);
+        printf("|%d|-> ", p->val);
         p = p->next;
     }
     printf("NULL\n");
