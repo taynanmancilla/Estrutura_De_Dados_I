@@ -5,25 +5,27 @@
 int main(){
 
     LinkedList *Lista = List_Create();
+/*
+    printf("Adicionando pelo Inicio:\n");
+    Add_First(Lista, 2);
+    print(Lista);
+    Add_First(Lista, 0);
+    print(Lista);
+    Add_First(Lista, 0);
+    print(Lista);
+    Add_First(Lista, 2);
+    print(Lista);
 
-/* ADD NO INICIO FUNCIONANDO:
-    Add_First(Lista, 2);
-    print(Lista);
-    Add_First(Lista, 0);
-    print(Lista);
-    Add_First(Lista, 0);
-    print(Lista);
-    Add_First(Lista, 2);
-    print(Lista);
+    printf("\n");
 */
-
-    add(Lista, 2);
+    printf("Adicionando pelo Fim\n");
+    add_Last(Lista, 2);
     print(Lista);
-    add(Lista, 0);
+    add_Last(Lista, 0);
     print(Lista);
-    add(Lista, 2);
+    add_Last(Lista, 2);
     print(Lista);
-    add(Lista, 2);
+    add_Last(Lista, 2);
     print(Lista);
 
     return 0;
