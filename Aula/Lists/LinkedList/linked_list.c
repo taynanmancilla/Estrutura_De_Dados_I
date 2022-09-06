@@ -26,23 +26,34 @@ LinkedList *List_Create()
 {
     LinkedList *lista = (LinkedList*)calloc(1, sizeof(LinkedList)); // Alocando a lista dinamicamente
     lista->begin = NULL; // Atribuindo Nulo ao ponteiro pro inicio de uma lista recem criada
+    lista->end = NULL; // Atribuindo Nulo ao ponteiro pro final de uma lista recem criada
 
     return lista;
 }
 
+bool is_Empty(const LinkedList *lista)
+{
+    return (lista->begin == NULL && lista->end == NULL);
+}
+
 void Add_First(LinkedList *lista, int val)
 {
-        Node *p = Node_Create(val); // Criando um No P que recebe o valor VAL
-        p->next = lista->begin; // No P aponta onde o Inicio da lista esta apontando
-        lista->begin = p; // Inicio aponta pro P
-        lista->size++;
+    Node *p = Node_Create(val); // Criando um No P que recebe o valor VAL
+    p->next = lista->begin;
+
+    if(is_Empty(lista)){
+        lista->end = p;
+    }
+    lista->begin = p;
+    
+    lista->size++;
 }
 
 void add_Last(LinkedList *lista, int val)
 {
     Node *p = Node_Create(val);
     //Se a lista estiver vazia
-    if(lista->begin == NULL){
+    if(is_Empty(lista)){
         lista->begin = p;
     }else{
         Node *aux = lista->begin;
@@ -54,6 +65,19 @@ void add_Last(LinkedList *lista, int val)
         aux->next = p;
     }
     lista->size++;
+}
+
+void add_Better_Last(LinkedList *lista, int val)
+{
+    Node *new = Node_Create(val);
+
+    //Se a lista estiver vazia
+    if(is_Empty(lista)){
+        lista->begin = lista->end = new;
+    }else{
+        lista->end->next = new; // Proximo elemento do ultimo Node aponta pro novo
+        lista->end = lista->end->next; // O novo Node passa a ser o End
+    }
 }
 
 void print(const LinkedList *lista)
