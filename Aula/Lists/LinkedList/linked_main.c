@@ -18,7 +18,7 @@ int main(){
 
     printf("\n");
 */
-
+/*
     printf("Adicionando pelo Fim\n");
     add_Last(Lista, 5);
     print(Lista);
@@ -28,7 +28,7 @@ int main(){
     print(Lista);
     add_Last(Lista, 0);
     print(Lista);
-
+*/
 /*
     printf("Adicionando pelo Fim (Melhorado)\n");
     add_Better_Last(Lista, 7);
@@ -40,5 +40,15 @@ int main(){
     add_Better_Last(Lista, 17);
     print(Lista);
 */
-    return 0;
+
+    printf("Adicionando em ordem\n");
+    add_in_Order(Lista, 7);
+    print(Lista);
+    add_in_Order(Lista, 15);
+    print(Lista);
+    add_in_Order(Lista, 8);
+    print(Lista);
+    add_in_Order(Lista, 17);
+    print(Lista);   
+return 0;
 }

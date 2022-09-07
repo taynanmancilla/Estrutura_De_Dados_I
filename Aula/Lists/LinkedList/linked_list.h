@@ -13,6 +13,7 @@ bool is_Empty(const LinkedList *lista);
 void Add_First(LinkedList *lista, int val); // Insercao no primeiro elemento
 void add_Last(LinkedList *lista, int val); // Insercao no fim da lista
 void add_Better_Last(LinkedList *lista, int val); // Insercao no fim da lista
+void add_in_Order(LinkedList *lista, int val); // Insercao ordenada na lista
 void print(const LinkedList *lista); // Impressao dos elementos da lista
 
 

@@ -45,7 +45,7 @@ void Add_First(LinkedList *lista, int val)
         lista->end = p;
     }
     lista->begin = p;
-    
+
     lista->size++;
 }
 
@@ -78,6 +78,30 @@ void add_Better_Last(LinkedList *lista, int val)
         lista->end->next = new; // Proximo elemento do ultimo Node aponta pro novo
         lista->end = lista->end->next; // O novo Node passa a ser o End
     }
+    lista->size++;
+}
+
+void add_in_Order(LinkedList *lista, int val)
+{
+    Node *new = Node_Create(val);
+    //Node *aux = Node_Create(val);
+    if(is_Empty(lista)){
+        lista->begin = lista->end = new;
+    }else{
+        if(new->val < lista->begin->val){ // Se o New valor for menor que o primeiro elemento da lista
+            new->next = lista->begin; // New aponta pro primeiro elemento
+            lista->begin = new; // New passa a ser o Primeiro elemento
+        }else{
+            Node *aux = lista->begin; // Ponteiro auxiliar pra percorrer a lista
+            while(aux->next && new->val > aux->next->val){ // Se existe um proximo E o Novo valor for maior q o proximo
+                aux = aux->next; // Auxiliar pula pro proximo
+            }
+        // Achou um maior que o New
+        new->next = aux->next; // New aponta para o maior que ele
+        aux->next = new; // Anterior aponta pro New
+        }
+    }
+    lista->size++;
 }
 
 void print(const LinkedList *lista)
@@ -91,3 +115,5 @@ void print(const LinkedList *lista)
     }
     printf("NULL\n");
 }
+
+
