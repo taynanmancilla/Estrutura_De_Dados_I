@@ -33,7 +33,7 @@ LinkedList *List_Create()
 
 bool is_Empty(const LinkedList *lista)
 {
-    return (lista->begin == NULL && lista->end == NULL);
+    return lista->size == 0;
 }
 
 void Add_First(LinkedList *lista, int val)
@@ -104,6 +104,122 @@ void add_in_Order(LinkedList *lista, int val)
     lista->size++;
 }
 
+void remove_Value(LinkedList *lista, int val)
+{
+    if(!is_Empty(lista)){ // Se a lista nao estiver vazia
+        // Se for o primeiro elemento(begin)
+        if(lista->begin->val == val){
+            Node *aux = lista->begin; // Apontando pro primeiro elemento da lista pra nao perder a referencia
+            
+            // Se possui apenas um elemento:
+            if(lista->begin == lista->end){
+                lista->end == NULL;
+            }
+            lista->begin = lista->begin->next; // Primeiro elemento passa a ser o next do begin
+            free(aux);
+        }else{// Se o elemento estiver no meio da lista
+            Node *prior = lista->begin;
+            Node *aux = lista->begin->next;
+            
+            /* Enquanto a lista possuir elemento pra percorrer
+               E o valor do Node for diferente do valor(val). Os auxiliares avancam */
+            while(aux != NULL && aux->val != val){ 
+                prior = prior->next;
+                aux = aux->next;
+            }
+            // Node igual ao valor(val) foi encontrado e eh apontado pelo aux
+            if(aux != NULL){
+                prior->next = aux->next;
+
+                if(aux->next != NULL){ // Se for o Ultimo Node da lista
+                    lista->end = prior;
+                }
+
+                free(aux);
+            }
+        }
+        lista->size--;
+    }
+}
+
+void remove_Better(LinkedList *lista, int val)
+{
+    if(!is_Empty(lista)){
+        Node *aux = lista->begin;
+        Node *prior = NULL;
+
+        while(aux != NULL && aux->val != val){
+            prior = aux;
+            aux = aux->next;
+        }
+
+        if(aux != NULL){
+            if(lista->end == aux){ // Eh o ultimo Node?
+                lista->end = prior; // Final passa a ser o anterior
+            }
+            if(lista->begin == aux){ // Eh o primeiro Node?
+                lista->begin = aux->next; // Inicio passa a ser o proximo do Node
+            }
+            else{ // Corrige o encadeamento caso seja um Node no meio ou Ultimo
+                prior->next = aux->next; // Anterior aponta pro proximo do Node
+            }
+            free(aux);
+        }
+    }
+    lista->size--;
+}
+
+/*  void remove_all(LinkedList *lista, int val)
+{
+    if(!is_Empty(lista)){
+        Node *aux = lista->begin;
+        Node *prior = NULL;
+
+        while(aux != NULL){
+            if(aux->val == val){
+                if(lista->end == aux){
+                    lista->end = prior;
+                }
+                if(lista->begin == aux){
+                    lista->begin = aux->next;
+                }else{
+                    prior->next = aux->next;
+                }
+                free(aux);
+            }
+            prior = aux;
+            aux = aux->next;
+        }
+    }
+}
+*/
+
+int size(LinkedList *lista)
+{
+    return lista->size;
+}
+
+int get(LinkedList *lista, int index)
+{
+    if(is_Empty(lista)){
+        fprintf(stderr, "ERRO em 'get()'\n");
+        fprintf(stderr, "Lista Vazia\n");
+        exit(EXIT_FAILURE);
+    }else if(index < 0 || index >= lista->size){
+        fprintf(stderr, "ERRO em 'get()'\n");
+        fprintf(stderr, "Indice Invalido; %d\n", index);
+        exit(EXIT_FAILURE);
+    }else{
+        int i=0;
+        Node *p = lista->begin;
+        while(i != index){ // Percorrendo a lista ate achar o indice desejado
+            p = p->next;
+            i++;
+        }
+        return p->val;
+    }
+}
+
 void print(const LinkedList *lista)
 {
     Node *p = lista->begin;
@@ -114,6 +230,26 @@ void print(const LinkedList *lista)
         p = p->next;
     }
     printf("NULL\n");
+
+    printf("Size: %d\n", lista->size);
+    printf("Begin: %d\n", lista->begin->val);
+    printf("End: %d\n", lista->end->val);
+}
+
+void destroy(LinkedList **lista)
+{
+    LinkedList *L = *lista;
+    Node *p = L->begin;
+    Node *aux = NULL;
+    while(p != NULL){
+        aux = p;
+        p = p->next;
+        free(aux);
+    }
+    free(L);
+    *lista = NULL;
+
+    printf("Lista deletada com sucesso!");
 }
 
 
