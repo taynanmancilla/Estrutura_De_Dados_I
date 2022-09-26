@@ -1,0 +1,21 @@
+typedef struct _double_node DoubleNode, Node;
+typedef struct _double_linked_list DoubleLinkedList, List;
+
+Node *Node_create(int val);
+DoubleLinkedList *List_create();
+
+#include<stdbool.h>
+
+void Destroy(DoubleLinkedList *list);
+bool is_Empty(const DoubleLinkedList *lista);
+void Add_First(DoubleLinkedList *lista, int val); // Insercao no primeiro elemento
+void add_Last(DoubleLinkedList *lista, int val); // Insercao no fim da lista
+void print(const DoubleLinkedList *lista); // Impressao dos elementos da lista
+void inverted_print(const DoubleLinkedList *lista); // Impressao dos elementos da lista
+void Remove(DoubleLinkedList *lista); // Remove o primeiro valor(val) encontrado na lista
+
+
+void add_in_Order(DoubleLinkedList *lista, int val); // Insercao ordenada na lista
+int size(DoubleLinkedList *lista); // Retorna o tamanho da lista
+int get(DoubleLinkedList *lista, int index); // Retorna o valor na posicao desejada
+

@@ -26,6 +26,7 @@
  		- Busca de valor por posicao
 		- Remover um determinado elemento
 		- Implementar um ponteiro pro fim de lista
+	Desenvolver um MAKEFILE
 
  ###### HORÁRIO DE PERMANENCIA #####
 Segunda 13h00 - Presencial
