@@ -75,3 +75,15 @@ void print_List(const DoubleLinkedList *L)
     }
     printf("NULL\n");
 }
+
+void inverted_print(const DoubleLinkedList *L)
+{
+    Node *p = L->end;
+    printf("Lista Invertida = ");
+    while(p != NULL){
+        printf("|%d|->", p->val);
+        p = p->prev;
+    }
+    printf("BEGIN\n");
+    printf("Size: %d\n", L->size);
+}
