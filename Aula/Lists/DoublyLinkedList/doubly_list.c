@@ -54,14 +54,27 @@ bool is_Empty(const DoubleLinkedList *L)
 
 void Add_First(DoubleLinkedList *L, int val)
 {
-    Node *p = Node_create(val);
-    p->next = L->begin; // Novo Noh aponta pro Noh de inicio
+    Node *new = Node_create(val);
+    new->next = L->begin; // Novo Noh aponta pro Noh de inicio
     if(is_Empty(L)){
-        L->end = p;
+        L->end = new;
     }else{ 
-        L->begin->prev = p; // O anterior do primeiro elemento aponta pro novo
+        L->begin->prev = new; // O anterior do primeiro elemento aponta pro novo
     }
-    L->begin = p; // Proximo da lista vira o novo Noh
+    L->begin = new; // Proximo da lista vira o novo Noh
+    L->size++;
+}
+
+void Add_Last(DoubleLinkedList *L, int val)
+{
+    Node *new = Node_create(val);
+    new->prev = L->end;
+    if(is_Empty(L)){
+        L->begin = new;
+    }else{
+        L->end->next = new;
+    }
+    L->end = new;
     L->size++;
 }
 
@@ -74,6 +87,9 @@ void print_List(const DoubleLinkedList *L)
         p = p->next;
     }
     printf("NULL\n");
+    printf("Size: %d\n", L->size);
+    printf("Begin: %d\n", L->begin->val);
+    printf("End: %d\n", L->end->val);
 }
 
 void inverted_print(const DoubleLinkedList *L)
@@ -84,6 +100,8 @@ void inverted_print(const DoubleLinkedList *L)
         printf("|%d|->", p->val);
         p = p->prev;
     }
-    printf("BEGIN\n");
+    printf("NULL\n");
     printf("Size: %d\n", L->size);
+    printf("Begin: %d\n", L->begin->val);
+    printf("End: %d\n", L->end->val);
 }
