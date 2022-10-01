@@ -7,7 +7,7 @@
 
 			# TRABALHOS #
 
-#TRABALHO AGOSTO:
+# TRABALHO AGOSTO:
 	BubbleSort | SelectionSort | InsertionSort | MergeSort
 	Usar vetor de 500, 1000, 10k, 500k e 1M gravando em arquivo:
 	  Quantidade de trocas
@@ -20,13 +20,15 @@
 		Melhor e pior caso
 	Conclusao final comparando os algoritmos
 
-# TRABALHO SETEMBRO:
-	Lista Encadeada Simples:
+# TRABALHO SETEMBRO (02/10):
+	*Lista Encadeada Simples | Lista Duplamente Encadeada | Lista Circular:
+		- Adicionar elemento no Inicio e no Fim
+		- Imprimir normal e invertido
 		- Inserir de forma ordenada
  		- Busca de valor por posicao
 		- Remover um determinado elemento
 		- Implementar um ponteiro pro fim de lista
-	Desenvolver um MAKEFILE
+	*Desenvolver um MAKEFILE
 
  ###### HORÁRIO DE PERMANENCIA #####
 Segunda 13h00 - Presencial
