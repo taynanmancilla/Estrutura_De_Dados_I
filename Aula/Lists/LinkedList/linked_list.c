@@ -169,31 +169,6 @@ void remove_Better(LinkedList *lista, int val)
     lista->size--;
 }
 
-/*  void remove_all(LinkedList *lista, int val)
-{
-    if(!is_Empty(lista)){
-        Node *aux = lista->begin;
-        Node *prior = NULL;
-
-        while(aux != NULL){
-            if(aux->val == val){
-                if(lista->end == aux){
-                    lista->end = prior;
-                }
-                if(lista->begin == aux){
-                    lista->begin = aux->next;
-                }else{
-                    prior->next = aux->next;
-                }
-                free(aux);
-            }
-            prior = aux;
-            aux = aux->next;
-        }
-    }
-}
-*/
-
 int size(LinkedList *lista)
 {
     return lista->size;
