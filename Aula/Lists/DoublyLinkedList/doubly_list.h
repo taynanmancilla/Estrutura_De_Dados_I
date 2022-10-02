@@ -14,7 +14,7 @@ void Add_First(DoubleLinkedList *lista, int val); // Insercao no primeiro elemen
 void Add_Last(DoubleLinkedList *lista, int val); // Insercao no fim da lista
 void print_List(const DoubleLinkedList *lista); // Impressao dos elementos da lista
 void inverted_print(const DoubleLinkedList *lista); // Impressao dos elementos da lista
-void Remove(DoubleLinkedList *lista); // Remove o primeiro valor(val) encontrado na lista
+void Remove(DoubleLinkedList *lista, int val); // Remove o primeiro valor(val) encontrado na lista
 
 
 void add_in_Order(DoubleLinkedList *lista, int val); // Insercao ordenada na lista

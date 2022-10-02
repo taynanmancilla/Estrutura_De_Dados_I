@@ -105,3 +105,38 @@ void inverted_print(const DoubleLinkedList *L)
     printf("Begin: %d\n", L->begin->val);
     printf("End: %d\n", L->end->val);
 }
+
+void Remove(DoubleLinkedList *L, int val)
+{
+    if(!is_Empty(L)){ // Removendo se a lista nao for vazia
+        if(L->begin->val == val){ // Elemento na cabeca da lista
+            Node *p = L->begin;
+            L->begin = L->begin->next; // Cabeca recebe o segundo elemento da lista
+            if(L->size == 1){ // Lista de 1 elemento
+                L->end = NULL;
+            }else{
+                L->begin->prev = NULL; // Nova Cabeca rebece Nulo no Anterior 
+            }
+        free(p); // desaloca o Noh que corresponde ao elemento
+        L->size--; 
+        }else{ // Elemento no meio ou no fim da lista
+            Node *p = L->begin->next;
+            while(p != NULL){
+                if(p->val == val){
+                    p->prev->next = p->next;    // O Next do Noh anterior passar a ser o Next de P
+                    if(L->end == p){    // Elemento no fim
+                        L->end = L->end->prev; // Fim de Lista passa a ser o penultimo
+                        
+                    }else{              //Elemento no meio
+                        p->next->prev = p->prev; // Anterior do Next de P passa a ser o Noh anteior de P               
+                    }
+                    free(p);
+                    p = NULL;
+                    L->size--;
+                }else{
+                    p = p->next;
+                }
+            }
+        }
+    }
+}
