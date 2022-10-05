@@ -140,3 +140,24 @@ void Remove(DoubleLinkedList *L, int val)
         }
     }
 }
+
+int get(DoubleLinkedList *L, int index)
+{
+    if(is_Empty(L)){
+        fprintf(stderr, "Erro em get()\n");
+        fprintf(stderr, "Lista Vazia!\n");
+        exit(EXIT_FAILURE);
+    }else if(index < 0 || index >= L->size){
+        fprintf(stderr, "Erro em get()\n");
+        fprintf(stderr, "Indice Invalido: %d\n", index);
+        exit(EXIT_FAILURE);
+    }else{
+        Node *p = L->begin;
+        int i=0;
+        while(i != index){
+            p = p->next;
+            i++;
+        }
+        return p->val;
+    }
+}
