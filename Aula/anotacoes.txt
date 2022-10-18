@@ -30,6 +30,9 @@
 		- Implementar um ponteiro pro fim de lista
 	*Desenvolver um MAKEFILE
 
+# PROVA SETEMBRO
+	- Funcoes de Imprimir, Inserir e Deletar
+
  ###### HORÁRIO DE PERMANENCIA #####
 Segunda 13h00 - Presencial
 Quata 14h00 - Via Meet
