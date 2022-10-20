@@ -1,0 +1,49 @@
+# Criando a pasta OBJ (Guardar os arquivos compilados .o)
+	mkdir obj 
+# Gerando o arquivo objeto e jogando na respectiva pasta
+	gcc -c float_vector.c -o obj/float_vector.o
+
+------------------------------------------------------------------------------------------
+
+# Criando a pasta INCLUDE (Guardar arquivos de cabecalho)
+	mkdir include
+# Movendo o arquivo de especificacoes para a respectiva pasta
+	mv .\float_vector.h include/
+
+------------------------------------------------------------------------------------------
+
+# Criando a pasta SRC (Guardar os arquivos de implementacao, arquivos fontes)
+	mkdir src
+# Movendo arquivo de implementacao pra sua respectiva pasta
+	mv .\float_vector.c src/
+
+------------------------------------------------------------------------------------------
+	COMPILANDO
+# Informando ao compilador onde estao os arquivos
+# -c (Arquivo Fonte que nao eh executave, ou seja, nao possui uma MAIN))
+# -I (Arquivos de Cabecalho)
+# -o (Gerar o arquivo objeto)
+	gcc -c .\src\float_vector.c -I .\include -o .\obj\float_vector.o
+
+------------------------------------------------------------------------------------------
+
+# Criando a pasta APPS (Guardar arquivos executaveis, ou seja, que possuem a MAIN)
+	mkdir apps
+# Movendo o programa para sua pasta
+	 mv .\tad.c .\apps\ 
+
+------------------------------------------------------------------------------------------
+
+# Criando a pasta BIN (Guardar programas compilados, arquivos binarios dos programas)
+	mkdir bin
+
+------------------------------------------------------------------------------------------
+	COMPILANDO
+# Pra entender melhor vamos dividir:
+    # Compilando o arquivo tad.c
+    # Considerar o arquivo JA COMPILADO float_vector.o
+        # Dessa forma conseguimos esconder o arquivo fonte	
+    # Considerar os arquivos da pasta include
+    # Gerar o executavel app na pasta bin
+	gcc .\apps\tad.c .\obj\float_vector.o -I .\include -o .\bin\app 
+------------------------------------------------------------------------------------------

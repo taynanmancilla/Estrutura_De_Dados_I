@@ -4,6 +4,7 @@ Disponibilizamos as funcoes
 */
 
 #include<stdio.h>
+#include<stdbool.h>
 
 //Especificando a estrutura
 typedef struct float_vector FloatVector; 
@@ -44,4 +45,3 @@ bool compare(FloatVector*, FloatVector*); //comparar duas TADS
 void split(FloatVector*, FloatVector*); //separar duas TADS
 void join(FloatVector*, FloatVector*); //concatenar duas TADS
 */
-
