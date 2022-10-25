@@ -31,21 +31,39 @@ bool StaticStack_isFull(const StaticStack *S){ return S->top == S->capacity - 1;
 
 void StaticStack_push(StaticStack *S, long value)
 {
-    //Verficar se esta cheio printando msg de erro
+    if(StaticStack_isFull(S)){
+        fprintf(stderr, "Erro em push()\n");
+        fprintf(stderr, "Vetor esta cheio\n");
+        exit(EXIT_FAILURE);
+    }
     S->top++;
     S->data[S->top] = value;
 }
 void StaticStack_pop(StaticStack *S)
 {
-    //Verificar se esta vazio printando msg de erro
+    if(StaticStack_isEmpty(S)){
+        fprintf(stderr, "Erro em pop()\n");
+        fprintf(stderr, "Vetor esta vazio\n");
+        exit(EXIT_FAILURE);
+    }
     int aux = S->data[S->top];
     S->top--;
 
     return aux;
 }
 
-void StaticStack_peek(StaticStack *S); //*
+void StaticStack_peek(StaticStack *S)
+{
+    if(StaticStack_isEmpty(S)){
+        fprintf(stderr, "Erro em peek()\n");
+        fprintf(stderr, "Vetor esta vazio\n");
+        exit(EXIT_FAILURE);
+    }
+    return S->data[S->top];
+}
 
 void StaticStack_print(StaticStack *S); //*
 
-long StaticStack_size(const StaticStack *S); //*
+long StaticStack_size(const StaticStack *S){
+    return S->top+1;
+}
