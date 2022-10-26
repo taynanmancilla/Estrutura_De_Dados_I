@@ -58,6 +58,9 @@ void print_list(const LinkedList *L){
         aux = aux->next;
     }
     printf("NULL\n");
+    printf("Size: %d\n", L->size);
+    printf("Begin: %d\n", L->begin->val);
+    printf("End: %d\n", L->end->val);
 }
 
 void remove_pair(LinkedList *L){
@@ -77,18 +80,6 @@ void remove_pair(LinkedList *L){
                 p = p->next;
                 aux = aux->next;
             }
-        }
-        if(p == L->end){
-            if(p->val%2 == 0){ 
-                L->end = ant;
-                free(p);
-                p = L->end;
-                p->next = NULL;
-            }/*else{
-                ant = p;
-                p = p->next;
-                aux = aux->next;
-            }*/
         }else{
             if(p->val%2 == 0){      // Se valor par estiver no meio
                 ant->next = aux;
