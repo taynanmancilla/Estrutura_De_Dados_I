@@ -65,7 +65,7 @@ float at(const FloatVector *vector, int pos)
 {
     if(pos < 0 || pos >= vector->size){
         fprintf(stderr, "Error: Invalid position\n");
-        fprintf(stderr, "Index [%d] is out of bounds\n");
+        fprintf(stderr, "Index [%d] is out of bounds\n", pos);
         exit(EXIT_FAILURE);
     }
 

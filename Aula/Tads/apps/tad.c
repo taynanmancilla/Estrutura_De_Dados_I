@@ -5,7 +5,7 @@
 
 int main(int argc, char const *argv[]){
 
-    FloatVector *vetor = create(2);
+    FloatVector *vetor = create(4);
 
     print(vetor);
 
@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]){
 
     print(vetor);
 
-    append(vetor, 2.0);
+    //append(vetor, 2.0);
 
 
     destroy(&vetor);
