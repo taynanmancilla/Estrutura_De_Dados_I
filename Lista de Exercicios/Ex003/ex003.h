@@ -6,4 +6,5 @@ Site *Site_create(char *nome, char *link);
 List *List_create();
 
 void add_site(List *lista, char *nome, char *link);
-void print(const List *lista);
+void print_sites(const List *lista);
+void get_site(List *lista, char *nome);

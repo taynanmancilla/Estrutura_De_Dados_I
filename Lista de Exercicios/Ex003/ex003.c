@@ -52,15 +52,47 @@ void add_site(List *lista, char *nome, char *link)
     //lista->size++;
 }
 
-void print(const List *lista)
+void print_sites(const List *lista)
 {
     Site *p = lista->begin;
     int i=0;
-    printf("\tSites:\n");
+    printf("\n---------Sites---------\n");
     //Enquanto P apontar para um no existente
     while(p != NULL){
-        printf("Site: %s hospedado em %s",p->nome, p->link);
-        printf("\n");
+        printf("|%s|->",p->nome);
         p = p->next;
+    }
+    printf("NULL\n");
+    printf("Begin: %s\n", lista->begin->nome);
+    printf("End: %s\n", lista->end->nome);
+}
+
+void get_site(List *lista, char *nome)
+{
+    if(is_Empty(lista)){
+        fprintf(stderr, "ERRO em 'get()'\n");
+        fprintf(stderr, "Lista Vazia\n");
+        exit(EXIT_FAILURE);
+    }else{
+        Site *p = lista->begin;
+        Site *ant = NULL;
+        while(p->nome != nome){
+            ant = p;
+            p = p->next;
+        }
+        if(lista->begin->nome == p->nome){                      // No Inicio
+            printf("\nBusca: %s\nLink: %s\n", p->nome, p->link);
+        }else if(lista->end->nome == p->nome){                  // No Fim
+            p->next = lista->begin;
+            lista->begin = p;
+            lista->end = ant;
+            ant->next = NULL;
+            printf("\nBusca: %s\nLink: %s\n", p->nome, p->link);
+        }else{                                                  // No Meio
+            ant->next = p->next;
+            p->next = lista->begin;
+            lista->begin = p;
+            printf("\nBusca: %s\nLink: %s\n", p->nome, p->link);
+        }
     }
 }

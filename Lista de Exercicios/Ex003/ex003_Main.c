@@ -17,7 +17,14 @@ int main(){
     add_site(Lista, "Instagram", "https://instagram.com");
     add_site(Lista, "Xvideos", "https://xvideos.com");
     add_site(Lista, "Ifms", "https://ifms.edu.com.br");
-    print(Lista);
+    
+    print_sites(Lista);
+    get_site(Lista, "Facebook");
+    print_sites(Lista);
+    get_site(Lista, "Xvideos");
+    print_sites(Lista);
+    get_site(Lista, "Ifms");
+    print_sites(Lista);
 
 return 0;
 }
