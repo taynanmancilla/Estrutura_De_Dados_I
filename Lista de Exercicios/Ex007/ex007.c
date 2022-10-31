@@ -26,16 +26,16 @@ typedef struct _list {
     int size;
 } List;
 
-Aluno *create_Aluno(int ra)
+Aluno *create_Aluno(int ra, char *nome, bool cpl, bool aproalg)
 //Aluno *create_Aluno(int ra, char *nome, bool cpl, bool aproalg, float t1, float t2, float t3, float nsub)
 {
     Aluno *aluno = (Aluno*)calloc(1, sizeof(Aluno));
     aluno->ra = ra;
     aluno->next = NULL;
     aluno->prev = NULL;
-    // aluno->nome = nome;
-    // aluno->cpl = cpl;
-    // aluno->aproalg = aproalg;
+    aluno->nome = nome;
+    aluno->cpl = cpl;
+    aluno->aproalg = aproalg;
     // aluno->ntrab->t1 = t1;
     // aluno->ntrab->t2 = t2;
     // aluno->ntrab->t3 = t3;
@@ -59,10 +59,10 @@ bool is_Empty(const List *L)
     return L->size == 0;
 }
 
-void add_Aluno(List *L, int ra)
+void add_Aluno(List *L, int ra, char *nome, bool cpl, bool aproalg)
 //void add_Aluno(List *L, int ra, char *nome, bool cpl, bool aproalg, float t1, float t2, float t3, float nsub)
 {
-    Aluno *new = create_Aluno(ra);
+    Aluno *new = create_Aluno(ra, nome, cpl, aproalg);
     //Aluno *new = create_Aluno(ra, nome, cpl, aproalg, t1, t2, t3, nsub);
     if(is_Empty(L)){
         L->begin = L->end = new;
@@ -72,15 +72,16 @@ void add_Aluno(List *L, int ra)
             L->begin->prev = new; 
             L->begin = new; // New passa a ser o Primeiro elemento
         }else{
-            Aluno *aux = L->begin; // Ponteiro auxiliar pra percorrer a Lista
-            while(aux->next && new->ra > aux->next->ra){ // Se existe um proximo E o Novo valor for maior q o proximo
-                aux = aux->next; // Auxiliar pula pro proximo
+            Aluno *aux = L->begin;
+            while(aux->next && new->ra > aux->next->ra){ // Pula pro proximo ate achar um Maior
+                aux = aux->next;
             }
-        // Achou um maior que o New
-        new->next = aux; // New aponta para o maior que ele
-        new->prev = aux->prev; // Prev do New aponta pro Prev do Maior
-        aux->prev->next = new; // Anterior do Maior recebe o novo
-        aux->prev = new; // Prev do Maior eh o New
+            new->next = aux->next;
+            if(aux->next){
+                aux->next->prev = new;
+            }
+            new->prev = aux;
+            aux->next = new;
         }
     }
     L->size++;
@@ -90,12 +91,14 @@ void listar_Alunos(const List *L)
 {
     Aluno *p = L->begin;
     printf("\n--------- Estrutura de Dados - Lista de Alunos ---------\n\n");
+    printf("    RA    |  Nome  | CPL | AproAlg | MediaTrabs |\n");
     while(p != NULL){
-        printf("%d\n", p->ra);
+        printf("%d | %s | %s |   %s   |", p->ra, p->nome, p->cpl?"Sim":"Nao", p->aproalg?"Sim":"Nao");
+        printf("\n");
         p = p->next;
     }
     printf("\n");
-    // printf("Size: %d\n", L->size);
-    // printf("Begin: %d\n", L->begin->ra);
-    // printf("End: %d\n", L->end->ra);
+    printf("Size: %d\n", L->size);
+    printf("Begin: %s\n", L->begin->nome);
+    printf("End: %s\n", L->end->nome);
 }
