@@ -1,0 +1,30 @@
+        Sub Arvore a Esquerda/Direita (SAE/SAD)
+
+
+PRE -> Raiz - SAE - SAD
+
+IN -> SAE - Raiz - SAD
+
+POS -> SAE - SAD - Raiz
+
+    Conceitos Basicos (2)
+
+Pre:    
+    + * + 3 6 - 4 1 5
+
+In:
+    3 + 6 * 4 - 1 + 5 
+
+Pos: 
+    3 6 + 4 1 - * 5 +
+
+    Conceitos Basicos (3)
+
+Pre:
+    H I J O M Q P A B C E F
+
+In: 
+    O J M I Q P H A B C E F
+
+Pos:
+    O M J P Q I E F C B A H
