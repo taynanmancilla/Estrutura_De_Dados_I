@@ -8,7 +8,6 @@ typedef struct _site{
     char *nome;
     char *link;
     struct _site *next;
-    
 }Site;
 
 typedef struct _list{
@@ -23,13 +22,11 @@ Site *Site_create(char *nome, char *link)
     site->link = link;
     return site;
 }
-
 List *List_create()
 {
     List *lista = (List*)calloc(1, sizeof(List));
     lista->begin = NULL;
     lista->end = NULL;
-
     return lista;
 }
 
@@ -42,14 +39,12 @@ void add_site(List *lista, char *nome, char *link)
 {
     Site *new = Site_create(nome, link);
 
-    //Se a lista estiver vazia
     if(is_Empty(lista)){
         lista->begin = lista->end = new;
     }else{
-        lista->end->next = new; // Proximo elemento do ultimo Node aponta pro novo
-        lista->end = lista->end->next; // O novo Node passa a ser o End
+        lista->end->next = new;
+        lista->end = lista->end->next;
     }
-    //lista->size++;
 }
 
 void print_sites(const List *lista)
@@ -57,7 +52,6 @@ void print_sites(const List *lista)
     Site *p = lista->begin;
     int i=0;
     printf("\n---------Sites---------\n");
-    //Enquanto P apontar para um no existente
     while(p != NULL){
         printf("|%s|->",p->nome);
         p = p->next;
@@ -80,15 +74,15 @@ void get_site(List *lista, char *nome)
             ant = p;
             p = p->next;
         }
-        if(lista->begin->nome == p->nome){                      // No Inicio
+        if(lista->begin->nome == p->nome){                      
             printf("\nBusca: %s\nLink: %s\n", p->nome, p->link);
-        }else if(lista->end->nome == p->nome){                  // No Fim
+        }else if(lista->end->nome == p->nome){                  
             p->next = lista->begin;
             lista->begin = p;
             lista->end = ant;
             ant->next = NULL;
             printf("\nBusca: %s\nLink: %s\n", p->nome, p->link);
-        }else{                                                  // No Meio
+        }else{                                                  
             ant->next = p->next;
             p->next = lista->begin;
             lista->begin = p;

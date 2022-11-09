@@ -13,15 +13,15 @@ int main(){
 
     List *Lista = List_create();
 
-    add_site(Lista, "Facebook", "https://facebook.com");
-    add_site(Lista, "Instagram", "https://instagram.com");
-    add_site(Lista, "Xvideos", "https://xvideos.com");
-    add_site(Lista, "Ifms", "https://ifms.edu.com.br");
+    add_site(Lista, "Facebook", "https://www.facebook.com");
+    add_site(Lista, "Instagram", "https://www.instagram.com");
+    add_site(Lista, "Corinthians", "https://www.corinthians.com.br");
+    add_site(Lista, "Ifms", "https://www.ifms.edu.br");
     
     print_sites(Lista);
     get_site(Lista, "Facebook");
     print_sites(Lista);
-    get_site(Lista, "Xvideos");
+    get_site(Lista, "Corinthians");
     print_sites(Lista);
     get_site(Lista, "Ifms");
     print_sites(Lista);
