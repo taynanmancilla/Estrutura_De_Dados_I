@@ -6,13 +6,13 @@ int main(){
 
     LinkedList *Lista = list_create();
 
-    add_last(Lista, 10);
+    add_last(Lista, 2);
     add_last(Lista, 5);
     add_last(Lista, 15);
     add_last(Lista, 20);
-    add_last(Lista, 10);
+    add_last(Lista, 8);
     add_last(Lista, 15);
-    add_last(Lista, 10);
+    add_last(Lista, 11);
     print_list(Lista);
 
     printf("Removendo Pares:\n");

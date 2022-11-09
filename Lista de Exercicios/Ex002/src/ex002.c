@@ -74,7 +74,8 @@ void remove_pair(LinkedList *L){
                 L->begin = aux;    
                 free(p);
                 p = L->begin;      
-                aux = aux->next;   
+                aux = aux->next;
+                L->size--;   
             }else{  // Se for impar, todos os ponteiros pulam pra frente:
                 ant = p;
                 p = p->next;
@@ -86,6 +87,7 @@ void remove_pair(LinkedList *L){
                 free(p);
                 p = aux;
                 aux = aux->next;
+                L->size--;
             }else{      // Se for impar, todos os ponteiros pulam pra frente:
                 ant = p;
                 p = p->next;
@@ -93,8 +95,4 @@ void remove_pair(LinkedList *L){
             }
         }
     }
-
-
-
 }
-
