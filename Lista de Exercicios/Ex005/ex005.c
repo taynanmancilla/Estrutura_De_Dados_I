@@ -55,30 +55,6 @@ void car_exit(CarPark *park, char *matricula, char *hora_saida)
     p->hora_saida = hora_saida;
     park->size--;
 
-/*
-    if(!is_Empty(park)){
-        Car *p = park->begin;
-        Car *aux = NULL;
-
-        while(p != NULL && p->matricula != matricula){
-            aux = p;
-            p = p->next;
-        }
-
-        if(p != NULL){
-            if(park->end == p){
-                park->end = aux;
-            }
-            if(park->begin == p){
-                park->begin = p->next;
-            }else{
-                aux->next = p->next;
-            }
-            free(p);
-            park->size--;
-        }
-    }
-*/
 }
 
 void print_park(const CarPark *park)

@@ -27,10 +27,14 @@ int main(){
     register_Car(Park, "981420", "Cleber", "22:58:29");
     register_Car(Park, "238742", "Victor", "23:00:00");
 
+    print_park(Park);
+
     car_exit(Park, "686271", "20:40:00");
     car_exit(Park, "238742", "21:00:00");
     car_exit(Park, "981420", "23:10:15");
 
+    printf("Wesley, Tereza e Cleber sairam...\n");
+    
     print_park(Park);
 
 
