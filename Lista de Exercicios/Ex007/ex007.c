@@ -7,6 +7,7 @@ typedef struct _notas{
     float t1;
     float t2;
     float t3;
+    //float media;
 } Notas;
 
 typedef struct _aluno{
@@ -15,7 +16,7 @@ typedef struct _aluno{
     bool cpl;
     bool aproalg;
     Notas *ntrab;
-    float nsub;
+    //float nsub;
     struct _aluno *next;
     struct _aluno *prev;
 } Aluno;
@@ -25,8 +26,18 @@ typedef struct _list {
     Aluno *end;
     int size;
 } List;
+/*
+Notas *create_Trab(Aluno aluno, float t1, float t2, float t3)
+{
+    Notas *Trab = (Notas*)calloc(1, sizeof(Notas));
+    Trab->t1 = t1;
+    Trab->t2 = t2;
+    Trab->t3 = t3;
+    //Trab->media = (t1+t2+t3)/3;
+    return Trab;
+}*/
 
-Aluno *create_Aluno(int ra, char *nome, bool cpl, bool aproalg)
+Aluno *create_Aluno(int ra, char *nome, bool cpl, bool aproalg, Notas *ntrab)
 //Aluno *create_Aluno(int ra, char *nome, bool cpl, bool aproalg, float t1, float t2, float t3, float nsub)
 {
     Aluno *aluno = (Aluno*)calloc(1, sizeof(Aluno));
@@ -36,9 +47,10 @@ Aluno *create_Aluno(int ra, char *nome, bool cpl, bool aproalg)
     aluno->nome = nome;
     aluno->cpl = cpl;
     aluno->aproalg = aproalg;
-    // aluno->ntrab->t1 = t1;
-    // aluno->ntrab->t2 = t2;
-    // aluno->ntrab->t3 = t3;
+    aluno->ntrab->t1 = ntrab->t1;
+    aluno->ntrab->t2 = ntrab->t2;
+    aluno->ntrab->t3 = ntrab->t3;
+    //create_Trab(*aluno, t1, t2, t3);
     // aluno->nsub = nsub;
 
     return aluno;
@@ -59,10 +71,10 @@ bool is_Empty(const List *L)
     return L->size == 0;
 }
 
-void add_Aluno(List *L, int ra, char *nome, bool cpl, bool aproalg)
+void add_Aluno(List *L, int ra, char *nome, bool cpl, bool aproalg, Notas *ntrab)
 //void add_Aluno(List *L, int ra, char *nome, bool cpl, bool aproalg, float t1, float t2, float t3, float nsub)
 {
-    Aluno *new = create_Aluno(ra, nome, cpl, aproalg);
+    Aluno *new = create_Aluno(ra, nome, cpl, aproalg, ntrab);
     //Aluno *new = create_Aluno(ra, nome, cpl, aproalg, t1, t2, t3, nsub);
     if(is_Empty(L)){
         L->begin = L->end = new;
@@ -94,7 +106,7 @@ void listar_Alunos(const List *L)
     printf("    RA    |  Nome  | CPL | AproAlg | MediaTrabs |\n");
     while(p != NULL){
         printf("%d | %s | %s |   %s   |", p->ra, p->nome, p->cpl?"Sim":"Nao", p->aproalg?"Sim":"Nao");
-        printf("\n");
+        printf("%.2f    |\n", p->ntrab->t1);
         p = p->next;
     }
     printf("\n");
