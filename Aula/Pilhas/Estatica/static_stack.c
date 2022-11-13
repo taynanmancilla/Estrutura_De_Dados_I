@@ -18,32 +18,34 @@ StaticStack *StaticStack_create(long capacity)
     return S;
 }
 
-void StaticStack_destroy(StaticStack **s_stack)
+void StaticStack_destroy(StaticStack **S_ref)
 {
-    StaticStack *S = *s_stack;
+    StaticStack *S = *S_ref;
     free(S->data); // Free no Vetor
     free(S);
-    s_stack = NULL; // Retira o valor do ponteiro no programa Main
+    S_ref = NULL; // Setando o conteudo da referencia pra nulo
 }
 
 bool StaticStack_isEmpty(const StaticStack *S){ return S->top == -1; }
-bool StaticStack_isFull(const StaticStack *S){ return S->top == S->capacity - 1; }
+bool StaticStack_isFull(const StaticStack *S){ return S->top == (S->capacity - 1); }
 
-void StaticStack_push(StaticStack *S, long value)
+void StaticStack_push(StaticStack *S, int value)
 {
     if(StaticStack_isFull(S)){
         fprintf(stderr, "Erro em push()\n");
-        fprintf(stderr, "Vetor esta cheio\n");
+        fprintf(stderr, "A Pilha esta cheia\n");
         exit(EXIT_FAILURE);
     }
     S->top++;
     S->data[S->top] = value;
+    //S[++top] = value
 }
-void StaticStack_pop(StaticStack *S)
+
+int StaticStack_pop(StaticStack *S)
 {
     if(StaticStack_isEmpty(S)){
         fprintf(stderr, "Erro em pop()\n");
-        fprintf(stderr, "Vetor esta vazio\n");
+        fprintf(stderr, "A Pilha esta vazia\n");
         exit(EXIT_FAILURE);
     }
     int aux = S->data[S->top];
@@ -52,17 +54,25 @@ void StaticStack_pop(StaticStack *S)
     return aux;
 }
 
-void StaticStack_peek(StaticStack *S)
+int StaticStack_peek(StaticStack *S)
 {
     if(StaticStack_isEmpty(S)){
         fprintf(stderr, "Erro em peek()\n");
-        fprintf(stderr, "Vetor esta vazio\n");
+        fprintf(stderr, "A Pilha esta vazia\n");
         exit(EXIT_FAILURE);
     }
     return S->data[S->top];
 }
 
-void StaticStack_print(StaticStack *S); //*
+void StaticStack_print(const StaticStack *S)
+{
+    printf("Capacity: %ld\n", S->capacity);
+    printf("Top: %ld\n", S->top);
+
+    for(long i=0; i<=S->top; i++){
+        printf("|%d| - %d\n", i, S->data[i]);
+    }
+}
 
 long StaticStack_size(const StaticStack *S){
     return S->top+1;
