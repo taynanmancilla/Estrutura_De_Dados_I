@@ -10,9 +10,10 @@ momento.
 int main(){
 
     Queue *fila = create_Queue();
+    int tam, removido;
 
 
-    printf("-------- ENQUEUE (10, 50, 30) --------\n");
+    printf("-------- ENQUEUE (10, 50, 30, 40, 60) --------\n");
     enqueue_Queue(fila, 10);
     enqueue_Queue(fila, 50);
     enqueue_Queue(fila, 30);
@@ -20,9 +21,33 @@ int main(){
     enqueue_Queue(fila, 60);
     print_Queue(fila);
 
-    dequeue_Queue(fila);
+    tam = size_Queue(fila);
+    printf("\nTamanho da fila: %d elementos\n\n", tam);
 
+    printf("-------- ENQUEUE (20, 80, 70) --------\n");
+    enqueue_Queue(fila, 20);
+    enqueue_Queue(fila, 80);
+    enqueue_Queue(fila, 70);
     print_Queue(fila);
+
+    tam = size_Queue(fila);
+    printf("\nTamanho da fila: %d elementos\n\n", tam);
+
+    printf("-------- DEQUEUE --------\n");
+    removido = dequeue_Queue(fila);
+    printf("Dequeue no %d\n", removido);
+    print_Queue(fila);
+
+    tam = size_Queue(fila);
+    printf("\nTamanho da fila: %d elementos\n\n", tam);
+    
+    printf("-------- DEQUEUE --------\n");
+    removido = dequeue_Queue(fila);
+    printf("Dequeue no %d\n", removido);
+    print_Queue(fila);
+
+    tam = size_Queue(fila);
+    printf("\nTamanho da fila: %d elementos\n\n", tam);
 
     destroy_Queue(&fila);
 

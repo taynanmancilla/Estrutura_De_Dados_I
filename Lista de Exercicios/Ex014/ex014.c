@@ -22,7 +22,7 @@ typedef struct _queue{
 Node *Node_create(int val)
 {
     Node *node = (Node*)calloc(1, sizeof(Node));
-    node->next = NULL;
+    node->next = node;
     node->val = val;
 
     return node;
@@ -36,15 +36,21 @@ List *List_create()
 
     return L;
 }
+void Destroy_Node(Node **Ref_node)
+{
+    free(*Ref_node);
+    *Ref_node = NULL;
+}
 void Destroy_List(List **Ref_list)
 {
     List *L = *Ref_list;
     Node *p = L->begin;
+    Node *aux = NULL;
 
-    while(p != NULL){
-        Node *aux = p;
+    for(int i=0; i < L->size; i++){
+        aux = p;
         p = p->next;
-        free(aux);
+        Destroy_Node(&aux);
     }
     free(L);
     *Ref_list = NULL;
@@ -64,7 +70,8 @@ void Add_Last_List(List *L, int val)
         L->begin = L->end = new;
     }else{
         L->end->next = new;
-        L->end = L->end->next;
+        L->end = new;
+        new->next = L->begin;
     }
     L->size++;
 }
@@ -73,27 +80,33 @@ void Remove_First_List(List *L)
     if(!is_Empty_List(L)){
         Node *p = L->begin;
         if(L->begin == L->end){ // Lista com apenas 1 elemento
-            L->begin = NULL;
-            L->end = NULL;
+            L->begin = L->end = NULL;
         }else{ // Lista com mais de 1 elemento
-            L->begin = L->begin->next;
+            L->begin = p->next;
+            L->end->next = L->begin;
         }
-        free(p); // Remove o primeiro elemento
+        Destroy_Node(&p); // Remove o primeiro elemento
         L->size--;
     }
 }
 void print_List(const List *L)
 {
-    Node *p = L->begin;
-    printf("Fila = ");
-    while(p != NULL){
-        printf("|%d|->", p->val);
-        p = p->next;
-    }
-    printf("NULL\n");
-    printf("Size: %d\n", L->size);
+    if(is_Empty_List(L)){
+        fprintf(stderr, "Erro em print_List()\n");
+        fprintf(stderr, "Lista Vazia!\n");
+        exit(EXIT_FAILURE);
+    }else{
+        Node *p = L->begin;
+        printf("Fila = ");
+        do{
+            printf("|%d|->", p->val);
+            p = p->next;
+        }while(p != L->begin);
+    printf("Begin\n");
     printf("Begin: %d\n", L->begin->val);
     printf("End: %d\n", L->end->val);
+    printf("End.Next: %d\n", L->end->next->val);
+    }
 }
 
 //-----------------Queue-----------------

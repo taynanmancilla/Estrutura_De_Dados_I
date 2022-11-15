@@ -12,6 +12,7 @@ typedef struct _queue Queue;
 Node *Node_create(int val);
 List *List_create();
 void Destroy_List(List **Ref_list);
+void Destroy_Node(Node **Ref_node);
 bool is_Empty_List(const List *L);
 int List_size(const List *L);
 void Add_Last_List(List *L, int val);
