@@ -1,10 +1,9 @@
 #include "ex009.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define TAM 20
 
 typedef struct cad_inf {
-    char *tipo;
+    char *usuario_cad;
     char *nome_cad;
     char *placa;
     char *id;
@@ -20,16 +19,16 @@ typedef struct node_simples {
 typedef struct linkedlist {
     Node *begin;
     Node *end;
-    int capacity, cont, cont1;
+    long int capacity, cont, cont1;
 } List;
 
 bool isNull(List *lista){
     return lista->begin == NULL;
 }
 
-Info *cadastro (char *tipo, char *nome, char *id, int vaga, char *placa){
+Info *cadastro (char *usuario, char *nome, char *id, int vaga, char *placa){
     Info *aux = (Info*)calloc(1, sizeof(Info));
-    aux->tipo = tipo;
+    aux->usuario_cad = usuario;
     aux->nome_cad = nome;
     aux->id = id;
     aux->vaga = vaga;
@@ -48,12 +47,12 @@ List *create_lista(){
     List *list = (List*)calloc(1, sizeof(List));
     list->begin = NULL;
     list->end = NULL;
-    list->capacity = TAM;
-    list->cont = 0; //estudante
-    list->cont1 = 0; //servidor
+    list->capacity = 20;
+    list->cont = 0;
     return list;
 
 }
+
 
 void destroy (List **ref_list){
     List *l = *ref_list;
@@ -71,61 +70,60 @@ void destroy (List **ref_list){
 
 }
 
-void insert_dados(List *lista, Info *p){
+void insert_dados(List *lista_est,  List *lista_serv, Info *p){
     Node *dados = create_node(p);
-
-    //if(lista->cont1 >= TAM*0.1 || lista->cont <= TAM*0.9)
-    if(isNull(lista)){
-        lista->begin = lista->end = dados;
-    }else{
-        lista->end->next = dados;
-        dados->prev = lista->end;
-        lista->end = dados;
-    }
-}
-
-void estacionamento(List *est, List *fun, Info *pessoa)
-{
-    if(pessoa->tipo == "F"){
-        insert_dados(est, pessoa);
-    }else{
-        insert_dados(fun, pessoa);
-    }
-}
-
-/*
-void estacionamento(List *lista, Info *p){
-    if(!isNull(lista)){
-        validando(lista, p);
+    //fiz com a capacidade total de 20, dando 10% (2) para servidores, ou seja, reservei as primeiras vagas para eles
+    if(p->vaga == 1 || p->vaga == 2){
+        if(isNull(lista_serv))lista_serv->begin = lista_serv->end = dados;
+        else{
+            lista_serv->end->next = dados;
+            dados->prev = lista_serv->end;
+            lista_serv->end = dados;
+        }
+        lista_serv->cont1++;
     }
     else{
-        insert_dados(lista, p);
-        printf("insert\n");
-        if(lista->cont == 0){
-            Node *aux = lista->begin;
-            if(aux->cadastro_if->usuario_cad == "E"){
-                printf("validou...\n");
+        if(lista_est->cont == 0){
+            if(isNull(lista_est))lista_est->begin = lista_est->end = dados;
+            else{
+                lista_est->end->next = dados;
+                dados->prev = lista_est->end;
+                lista_est->end = dados;
             }
+        lista_est->cont++;
+        }
+        else if(lista_est->cont < (91 * ((lista_est->capacity + lista_serv->capacity)/2 ))/100){//mudar
+            lista_est->end->next = dados;
+            dados->prev = lista_est->end;
+            lista_est->end = dados;
+            lista_est->cont++;
+        }
+        else{
+            fprintf(stderr, "Erro: insert_dados");
+            fprintf(stderr, "Ato: %s nao pode estacionar, vagas para estudantes indisponiveis\n");
+            
         }
     }
 }
-*/
+
 /*void estacionamento(List *lista, Info *p){
     if(isNull(lista)){
+        printf("entrou\n");
         insert_dados(lista, p);
         Node *aux = lista->begin;
-        if(p->usuario_cad == "F"){
+        if(p->usuario_cad == "f"){
             printf("entrou na validacao\n");
             lista->cont1++;
             printf("cont1++ 01\n");
         }
-        else if(aux->cadastro_if->usuario_cad == "E"){
+        else if(aux->cadastro_if->usuario_cad == "e"){
             lista->cont++;
             printf("cont++ 01\n");
         }
     }
     else{
         printf("entrou no else\n");
+        Node *aux = lista->begin;
         while(aux != NULL){
             //contando os dados
             printf("while\n");
@@ -149,19 +147,11 @@ void estacionamento(List *lista, Info *p){
     }
 }*/
 
-void print_list(List *lista){
+void print_list(List *lista, List *lista1){
     Node *aux = lista->begin;
+    Node *aux1 = lista1->begin;
     if(isNull(lista))printf("Lista vazia\n");
-
-    // printf("Quantidade de Carros no Park: %d", park->size);
-    printf("\n| Tipo  | Matricula | Proprietario |  Placa   |\n");
-    while(aux != NULL){
-        printf("|   %s   |   %s   |    %s   | %s |\n", aux->cadastro_if->tipo, aux->cadastro_if->id, aux->cadastro_if->nome_cad, aux->cadastro_if->placa);
-        aux = aux->next;
-    }
-
-    // printf("Quantidade de alunos: %d\n", lista->cont);
-    // printf("Quantidade de servidores: %d\n", lista->cont1);
-    //printf("Vagas Livres no Estacionamento: %d\n", (lista->capacity - (lista->cont1+lista->cont)));
-
+    printf("vagas com alunos: %d\n", lista->cont);
+    printf("vagas com servidores %d\n", lista1->cont1);
+    printf("vagas livres no estacionamento: %ld\n", (((lista->capacity + lista1->capacity)/2) - (lista->cont + lista1->cont1)));
 }
