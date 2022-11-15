@@ -75,3 +75,22 @@ void Add_First(CircList *L, int val)
     L->begin = p;
     L->size++;
 }
+
+void print_CircularList(const CircList *L)
+{
+    if(is_Empty(L)){
+        fprintf(stderr, "Erro em print_CircularList()\n");
+        fprintf(stderr, "Lista Vazia!\n");
+        exit(EXIT_FAILURE);
+    }else{
+        CircNode *p = L->begin;
+        printf("Lista -> ");
+        do{
+            printf("|%d|->", p->val);
+            p = p->next;
+        }while(p != L->begin);
+
+        printf("\nL->End: |%d|\n", L->end->val);
+    }
+    printf("Size: %lu\n", L->size);
+}

@@ -12,3 +12,4 @@ bool is_Empty(const CircList *lista);
 
 void Add_First(CircList *L, int val); // Insercao no primeiro elemento
 void Add_Last(CircList *L, int val);
+void print_CircularList(const CircList *L);
