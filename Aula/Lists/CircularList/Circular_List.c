@@ -76,6 +76,22 @@ void Add_First(CircList *L, int val)
     L->size++;
 }
 
+void Add_Last(CircList *L, int val)
+{
+    CircNode *p = Node_create(val);
+    if(is_Empty(L)){
+        L->begin = L->end = p;
+    }else{
+        L->end->next = p;
+        p->prev = L->end;
+        L->end = p;
+        //Circular:
+        L->begin->prev = p;
+        p->next = L->begin;
+    }
+    L->size++;
+}
+
 void print_CircularList(const CircList *L)
 {
     if(is_Empty(L)){
@@ -93,4 +109,39 @@ void print_CircularList(const CircList *L)
         printf("\nL->End: |%d|\n", L->end->val);
     }
     printf("Size: %lu\n", L->size);
+}
+
+void remove_CircularList(CircList *L, int val)
+{
+    if(!is_Empty(L)){
+        CircNode *p = L->begin;
+        if(L->begin->val == val){ // Na cabeca da lista
+            if(L->begin == L->end){ // Lista de 1 elemento
+                L->begin = L->end = NULL;
+            }else{  // Mais de 1 elemento
+                L->begin = p->next;
+                L->begin->prev = L->end;
+                L->end->next = L->begin;
+            }
+            Node_Destroy(&p);
+            L->size--;
+        }else{ // No meio/final da lista
+            p = p->next;
+            while(p != L->begin){
+                if(p->val == val){
+                    if(L->end == p){ // Final
+                        L->end = p->prev;
+                    }          
+                    p->prev->next = p->next;
+                    p->next->prev = p->prev;
+                    
+                    Node_Destroy(&p);
+                    L->size--;
+                    break;      // Forcar a saida do while
+                }else{
+                    p = p->next;
+                }
+            }
+        }
+    }
 }
