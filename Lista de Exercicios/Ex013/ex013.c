@@ -58,10 +58,6 @@ bool is_Empty_List(const List *L)
 {
     return L->size == 0;
 }
-size_t List_size(const List *L)
-{
-    return L->size;
-}
 void Add_Last_List(List *L, int val, int priority)
 {
     Node *new = Node_create(val, priority);
@@ -77,7 +73,7 @@ void Add_Last_List(List *L, int val, int priority)
 void print_List(const List *L)
 {
     Node *p = L->begin;
-    printf("(Prioridade)|Valor|\n");
+
     printf("Fila = ");
     while(p != NULL){
         printf("(%d)|%d| - ", p->priority, p->val);
@@ -102,15 +98,6 @@ void destroy_Queue(Queue **Q_Ref)
     *Q_Ref = NULL;
 }
 
-bool is_empty_Queue(const Queue *Q)
-{
-    return is_Empty_List(Q->data);
-}
-long size_Queue(const Queue *Q)
-{
-    return List_size(Q->data);
-}
-
 void enqueue_Queue(Queue *Q, int info, int priority)
 {
     Add_Last_List(Q->data, info, priority);
@@ -121,9 +108,15 @@ void print_Queue(const Queue *Q)
     print_List(Q->data);
 }
 
-void divide_Queue(Queue *Q, int p)
+void divide_Queue(Queue *Q, Queue *elements, Queue *remainder, int p)
 {
-    Queue *elements = create_Queue();
-    Queue *remainder = create_Queue();
-
+    Node *aux = Q->data->begin;
+    while(aux!=NULL){
+        if(aux->priority <= p){
+            enqueue_Queue(elements, aux->val, aux->priority);
+        }else{
+            enqueue_Queue(remainder, aux->val, aux->priority);
+        }
+        aux = aux->next;
+    }
 }

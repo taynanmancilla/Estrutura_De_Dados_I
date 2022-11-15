@@ -13,6 +13,11 @@ usuario e outra com os elementos restantes.
 int main(){
 
     Queue *fila = create_Queue();
+    Queue *elements = create_Queue();
+    Queue *remainder = create_Queue();
+    int p;
+
+    printf("\n(Prioridade)|Valor|\n");
 
     enqueue_Queue(fila, 10, 1);
     enqueue_Queue(fila, 50, 5);
@@ -23,9 +28,21 @@ int main(){
     enqueue_Queue(fila, 40, 4);
     enqueue_Queue(fila, 80, 8);
     enqueue_Queue(fila, 60, 6);
+    printf("\n");
     print_Queue(fila);
+
+    printf("\nDigite o valor (1 a 9): ");
+    scanf("%d", &p);
+    divide_Queue(fila, elements, remainder, p);
+
+    printf("\n--------- Elementos ---------\n");
+    print_Queue(elements);
+
+    printf("\n----------- Resto -----------\n");
+    print_Queue(remainder);
 
     destroy_Queue(&fila);
 
+printf("\n");
 return 0;
 }
