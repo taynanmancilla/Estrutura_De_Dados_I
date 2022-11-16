@@ -140,7 +140,14 @@ List *Intercalate_List(CircList *L1, CircList *L2)
     }
 }
 
-void Copy_List(CircList *L);                        // E
+// (e) fazer uma copia da lista;
+List *Copy_List(CircList *L)
+{
+    List *new = List_create();
+    new = L;
+
+    return new;
+}
 
 
 void print_CircularList(const CircList *L)
@@ -163,4 +170,3 @@ void print_CircularList(const CircList *L)
         printf("L->End->Next: |%d|\n", L->end->next->val);
     }
 }
-

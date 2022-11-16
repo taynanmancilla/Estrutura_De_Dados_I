@@ -46,10 +46,16 @@ int main(){
     print_CircularList(New);
 
     puts("\n---------------------\n");
-
     puts("(c) concatenar duas listas circulares");
+
     Merge_List(L1, L2);
     print_CircularList(L1);
+
+    puts("\n---------------------\n");
+    puts("(e) fazer uma copia da lista");
+
+    CircList *copia = Copy_List(New);
+    print_CircularList(New);
 
     puts("\n---------------------\n");
 

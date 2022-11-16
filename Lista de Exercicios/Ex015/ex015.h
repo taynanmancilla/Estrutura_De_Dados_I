@@ -15,6 +15,6 @@ int size_List(const CircList *L);                   // (a)
 void InsertLeft_List(CircList *L, int val);         // (b)
 void Merge_List(CircList *L1, CircList *L2);        // (c)
 List *Intercalate_List(CircList *L1, CircList *L2); // (d)
-void Copy_List(CircList *L);                        // (e)
+List *Copy_List(CircList *L);                       // (e)
 
 void print_CircularList(const CircList *L);
