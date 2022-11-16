@@ -4,8 +4,8 @@ INCLUDE = ./include
 LIB = ./lib
 OBJ = ./obj
 SRC = ./src
-PROGRAM = ex015
-TESTE = ex015_Main
+PROGRAM = ex016
+TESTE = ex016_Main
 
 all: libed myapps
 
