@@ -1,5 +1,6 @@
 #include"ex016.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
     CircList *L1 = List_create();
@@ -39,7 +40,7 @@ int main(){
     print_CircularList(L2);
 
     puts("\n---------------------\n");
-    puts("(d) intercalar duas listas ordenadas");
+    puts("(d) intercalar duas listas");
 
     CircList *New = Intercalate_List(L1, L2);
     print_CircularList(New);

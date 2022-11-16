@@ -107,7 +107,7 @@ void Merge_List(CircList *L1, CircList *L2)
     L1->end->next = L1->begin;
 }
 
-// (d) intercalar duas listas ordenadas;
+// (d) intercalar duas listas;
 List *Intercalate_List(CircList *L1, CircList *L2)
 {
     if(!is_Empty(L1) && !is_Empty(L2)){
