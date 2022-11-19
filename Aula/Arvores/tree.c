@@ -11,7 +11,6 @@ typedef struct _tree{
     Node *root;
     int depth;
 }Tree;
-
 typedef struct _node{
     int val;
     Node *left;
@@ -21,6 +20,7 @@ typedef struct _node{
 Tree *create_tree()
 {
     Tree *T = (Tree*)malloc(sizeof(Tree));
+    T->root = NULL;
     return T;
 }
 Node *create_node(int val)
@@ -31,17 +31,36 @@ Node *create_node(int val)
     node->right = NULL;
     return node;
 }
-void destroy_tree(Tree *T);
 bool tree_is_empty(Tree *T)
 {
     T->root == NULL;
 }
 
+void destroy_node(Node *node)
+{
+    if(node == NULL){
+        return;
+    }
+    destroy_node(node->left);
+    destroy_node(node->right);
+    free(node);
+    node = NULL;
+}
+void destroy_tree(Tree *T)
+{
+    if(tree_is_empty(T)){
+        return;
+    }
+    destroy_node(T->root);
+    free(T);
+}
+
+
 void insert(Tree *T, int val)
 {
     if(tree_is_empty(T)){
         T->root = create_node(val);
-        puts("creating tree...");
+        //puts("creating tree...");
         return;
     }
     add(T->root, val);
@@ -49,21 +68,23 @@ void insert(Tree *T, int val)
 
 void add(Node *node, int val)
 {
-    if(node->val > val){
-        if(node->left == NULL){
-            node->left = create_node(val);
-            return;
-        }
-        add(node->left, val);
-    
-    }else{
-        if(node->right == NULL){
-            node->right = create_node(val);
-            return;
-        }
-        add(node->right, val);
+        if(node->val > val){
+            if(node->left == NULL){
+                node->left = create_node(val);
+                return;
+            }
+            add(node->left, val);
         
-    }
+        }else if(node->val == val){
+            return;
+        }else{
+            if(node->right == NULL){
+                node->right = create_node(val);
+                return;
+            }
+            add(node->right, val);
+        }
+
 }
 
 void pre_order(Tree *T)
@@ -73,6 +94,7 @@ void pre_order(Tree *T)
         return;
     }
     pre(T->root);
+    
 }
 
 void pre(Node *node)
@@ -82,10 +104,5 @@ void pre(Node *node)
         pre(node->left);
         pre(node->right);
     }
-}
-
-void in_order(Tree *T)
-{
-    
 }
 

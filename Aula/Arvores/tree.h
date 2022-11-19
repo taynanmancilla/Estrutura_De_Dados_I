@@ -6,7 +6,8 @@ typedef struct _node Node;
 Tree *create_tree();
 Node *create_node(int val);
 
-void destroy_tree(Tree *T); // Destruir
+void destroy_node(Node *node);  // Destruir o Noh
+void destroy_tree(Tree *T);     // Destruir a arvore
 bool tree_is_empty(Tree *T);
 
 void insert(Tree *T, int val);

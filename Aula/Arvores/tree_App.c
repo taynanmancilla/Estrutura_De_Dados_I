@@ -12,5 +12,7 @@ int main(){
     insert(t, 17);
     insert(t, 16);
 
+    pre_order(t);
+
 return 0;
 }
