@@ -107,31 +107,58 @@ void search(Tree *T, int val)
         consult(T->root, val);
     }
 }
-// del(Node *node, int val)
-// {
-//     if(node->val < val){
-//         node->right = del(node->right, val);
-//     }else if(node->val > val){
-//         node->left = del(node->left, val);
-//     }else{ // Elemento encontrado
-//         if(node->left == NULL && node->right == NULL){ // Nao possui nenhum filho
-//             free(node);
-//             return NULL; // Retornando nulo para o galho do Noh anterior
-//         }else if(node->left == NULL && node->right != NULL){ // Apenas 1 filho na direita
 
-//         }
-//     }
-// }
-// void remove(Tree *T, int val)
-// {
-//     if(T->root == NULL){
-//     //if(!tree_is_empty(T)){
-//         puts("tree is empty");
-//         return;
-//     }else{
-//         del(T->root, val);
-//     }
-// }
+Node *remover(Node *node, int val)
+{
+    if(node != NULL){
+        if(node->val == val){
+            if(node->left == NULL && node->right == NULL){ // Noh Folha
+                free(node);
+                printf("| %d | foi removido com sucesso\n", val);
+                return NULL;
+            }else{
+                if(node->left != NULL && node->right != NULL){  // Possuem 2 filhos
+                    Node *aux = node->left;
+                    while(aux->right != NULL){
+                        aux = aux->right;
+                    }
+                    node->val = aux->val;
+                    aux->val = val;
+                    printf("Elemento trocado |%d|\n", val);
+                    node->left = remover(node->left, val);
+                    return node;
+                }else{                                          // Possuem 1 filho
+                    Node *aux;
+                    if(node->left != NULL){
+                        aux = node->left;
+                    }else{
+                        aux = node->right;
+                    }
+                    free(node);
+                    printf("| %d | foi removido com sucesso\n", val);
+                    return aux;
+                }
+            }
+        }else{
+            if(val < node->val){
+                node->left = remover(node->left, val);
+            }else{
+                node->right = remover(node->right, val);
+            }
+            return node;
+        }
+    }
+}
+void removeVal(Tree *T, int val)
+{
+    if(T->root == NULL){
+    //if(!tree_is_empty(T)){
+        puts("Valor nao encontrado!\n");
+        return;
+    }else{
+        remover(T->root, val);
+    }
+}
 
 void pre(Node *node)
 {
@@ -161,7 +188,7 @@ void in(Node *node)
 }
 void in_order(Tree *T)
 {
-    if(tree_is_empty(T)){
+    if(T->root == NULL){
         puts("tree is empty");
         return;
     }
@@ -178,7 +205,7 @@ void pos(Node *node)
 }
 void pos_order(Tree *T)
 {
-    if(tree_is_empty(T)){
+    if(T->root == NULL){
         puts("tree is empty");
         return;
     }

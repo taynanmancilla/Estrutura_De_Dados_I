@@ -12,7 +12,7 @@ bool tree_is_empty(Tree *T);    // Retorna se esta vazio
 
 void insert(Tree *T, int val);  // Insere um valor
 void search(Tree *T, int val);  // Busca Valor
-//void remove(Tree *T, int val);  // Remove Valor
+void removeVal(Tree *T, int val);  // Remove Valor
 
 void pre_order(Tree *T);
 void in_order(Tree *T);
@@ -22,6 +22,6 @@ void pos_order(Tree *T);
 // Dividir arvore apos 50 elementos (Quebrar a cada 50 e juntar, formando uma floresta)
 // Criar Menu para:
     // Inserir ********
-    // Deletar
+    // Deletar **********
     // Consultar **********
-    // Se arvore eh simetrica
+    // Se arvore eh simetrica 
