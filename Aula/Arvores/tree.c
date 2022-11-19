@@ -52,6 +52,7 @@ void destroy_tree(Tree *T)
     free(T);
 }
 
+
 void add(Node *node, int val)
 {
     Node *n = create_node(val);
@@ -72,14 +73,23 @@ void add(Node *node, int val)
 }
 void insert(Tree *T, int val)
 {
-    if(tree_is_empty(T)){
+    if(T->root == NULL){
+    //if(tree_is_empty(T)){
         T->root = create_node(val);
-        //puts("creating tree...");
+        puts("creating tree...");
         return;
-    }
+    }else{
     add(T->root, val);
+    }
 }
+void consult(Node *node, int val)
+{
 
+}
+void search(Tree *T, int val)
+{
+
+}
 
 void pre(Node *node)
 {
@@ -91,12 +101,12 @@ void pre(Node *node)
 }
 void pre_order(Tree *T)
 {
-    if(tree_is_empty(T)){
+    if(T->root == NULL){
+    //if(!tree_is_empty(T)){
         puts("tree is empty");
         return;
     }
     pre(T->root);
-    
 }
 
 void in(Node *node)
