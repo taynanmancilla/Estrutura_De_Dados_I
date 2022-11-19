@@ -8,18 +8,15 @@ int main(){
 
     Tree *t = create_tree();
 
-    // insert(t, 10);
-    // insert(t, 8);
-    // insert(t, 3);
-    // insert(t, 9);
-    // insert(t, 17);
-    // insert(t, 16);
-
     for(int i=0; i<TAM; i++){
         insert(t, val[i]);
     }
 
     pre_order(t);
+    printf("\nSearch (9):\n");
+    search(t, 9);
+    printf("\nSearch (18):\n");
+    search(t, 18);
 
     destroy_tree(t);
 

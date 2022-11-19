@@ -84,12 +84,54 @@ void insert(Tree *T, int val)
 }
 void consult(Node *node, int val)
 {
-
+    if(node != NULL){
+        if(node->val == val){
+            printf("Valor Encontrado: %d\n", node->val);
+        }else{
+            if(val > node->val){
+                return consult(node->right, val);
+            }else{
+                return consult(node->left, val);
+            }
+        }
+    }else{
+        printf("Valor (%d) Nao Existe!\n", val);
+    }
 }
 void search(Tree *T, int val)
 {
-
+    if(T->root == NULL){
+        puts("tree is empty!");
+        return;
+    }else{
+        consult(T->root, val);
+    }
 }
+// del(Node *node, int val)
+// {
+//     if(node->val < val){
+//         node->right = del(node->right, val);
+//     }else if(node->val > val){
+//         node->left = del(node->left, val);
+//     }else{ // Elemento encontrado
+//         if(node->left == NULL && node->right == NULL){ // Nao possui nenhum filho
+//             free(node);
+//             return NULL; // Retornando nulo para o galho do Noh anterior
+//         }else if(node->left == NULL && node->right != NULL){ // Apenas 1 filho na direita
+
+//         }
+//     }
+// }
+// void remove(Tree *T, int val)
+// {
+//     if(T->root == NULL){
+//     //if(!tree_is_empty(T)){
+//         puts("tree is empty");
+//         return;
+//     }else{
+//         del(T->root, val);
+//     }
+// }
 
 void pre(Node *node)
 {
@@ -142,4 +184,3 @@ void pos_order(Tree *T)
     }
     pos(T->root);
 }
-

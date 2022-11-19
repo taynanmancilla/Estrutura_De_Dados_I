@@ -12,6 +12,7 @@ bool tree_is_empty(Tree *T);    // Retorna se esta vazio
 
 void insert(Tree *T, int val);  // Insere um valor
 void search(Tree *T, int val);  // Busca Valor
+//void remove(Tree *T, int val);  // Remove Valor
 
 void pre_order(Tree *T);
 void in_order(Tree *T);
@@ -22,5 +23,5 @@ void pos_order(Tree *T);
 // Criar Menu para:
     // Inserir ********
     // Deletar
-    // Consultar
+    // Consultar **********
     // Se arvore eh simetrica
