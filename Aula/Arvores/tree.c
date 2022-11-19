@@ -3,9 +3,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void add(Node *node, int val);
-void pre(Node *node);
-void in(Node *node);
 
 typedef struct _tree{
     Node *root;
@@ -55,7 +52,24 @@ void destroy_tree(Tree *T)
     free(T);
 }
 
-
+void add(Node *node, int val)
+{
+    Node *n = create_node(val);
+    if(node->val > val){
+        if(node->left == NULL){
+            node->left = n;
+            return;
+        }
+        add(node->left, val);
+    
+    }else{
+        if(node->right == NULL){
+            node->right = n;
+            return;
+        }
+        add(node->right, val);
+    }
+}
 void insert(Tree *T, int val)
 {
     if(tree_is_empty(T)){
@@ -66,27 +80,15 @@ void insert(Tree *T, int val)
     add(T->root, val);
 }
 
-void add(Node *node, int val)
+
+void pre(Node *node)
 {
-        if(node->val > val){
-            if(node->left == NULL){
-                node->left = create_node(val);
-                return;
-            }
-            add(node->left, val);
-        
-        }else if(node->val == val){
-            return;
-        }else{
-            if(node->right == NULL){
-                node->right = create_node(val);
-                return;
-            }
-            add(node->right, val);
-        }
-
+    if(node != NULL){
+        printf("%d ", node->val);
+        pre(node->left);
+        pre(node->right);
+    }
 }
-
 void pre_order(Tree *T)
 {
     if(tree_is_empty(T)){
@@ -97,12 +99,37 @@ void pre_order(Tree *T)
     
 }
 
-void pre(Node *node)
+void in(Node *node)
 {
     if(node != NULL){
+        in(node->left);
         printf("%d ", node->val);
-        pre(node->left);
-        pre(node->right);
+        in(node->right);
     }
+}
+void in_order(Tree *T)
+{
+    if(tree_is_empty(T)){
+        puts("tree is empty");
+        return;
+    }
+    in(T->root);
+}
+
+void pos(Node *node)
+{
+    if(node != NULL){
+        pos(node->left);
+        pos(node->right);
+        printf("%d ", node->val);
+    }
+}
+void pos_order(Tree *T)
+{
+    if(tree_is_empty(T)){
+        puts("tree is empty");
+        return;
+    }
+    pos(T->root);
 }
 
