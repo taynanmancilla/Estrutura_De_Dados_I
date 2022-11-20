@@ -40,12 +40,14 @@ int main(){
         printf("5 - Imprimir Pre_Order\n");
         printf("6 - Imprimir In_Order\n");
         printf("7 - Imprimir Pos_Order\n");
+        printf("8 - Desenhar Arvore\n");
+        printf("9 - DESTRUIR Arvore\n");
         printf("0 - Sair\n\n>: ");
         scanf("%d", &op);
 
         switch(op){
             case 1:
-                printf("Quantos elementos deseja gerar? __");
+                printf("Quantos elementos deseja gerar?\n>: ");
                 scanf("%d", &size);
                 srand(time(NULL));
                 for(i=0;i<size; i++){
@@ -54,7 +56,9 @@ int main(){
                 }
                 break;
             case 2:
-                
+                printf("Qual valor deseja remover?\n>: ");
+                scanf("%d", size);
+                removeVal(t, size);
                 break;
             case 3:
                 
@@ -71,10 +75,17 @@ int main(){
                 printf("POS-ORDER:\n");
                 pos_order(t);
                 break;
+            case 8:
+                printf("DESENHO:\n");
+                draw_tree(t);
+                break;
+            case 9:
+                destroy_tree(t);
+                printf("Arvore Destruida com Sucesso!\n");
+                break;
         }
     }
 
-    destroy_tree(t);
 
 return 0;
 }

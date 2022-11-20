@@ -17,6 +17,7 @@ void removeVal(Tree *T, int val);  // Remove Valor
 void pre_order(Tree *T);
 void in_order(Tree *T);
 void pos_order(Tree *T);
+void draw_tree(Tree *T);
 
 // Buscar valor
 // Dividir arvore apos 50 elementos (Quebrar a cada 50 e juntar, formando uma floresta)

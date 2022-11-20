@@ -2,7 +2,7 @@
 #include"tree.h"
 #include<stdio.h>
 #include<stdlib.h>
-
+#define espaco 5
 
 typedef struct _tree{
     Node *root;
@@ -45,7 +45,8 @@ void destroy_node(Node *node)
 }
 void destroy_tree(Tree *T)
 {
-    if(tree_is_empty(T)){
+    if(T->root == NULL){
+    //if(tree_is_empty(T)){
         return;
     }
     destroy_node(T->root);
@@ -210,4 +211,80 @@ void pos_order(Tree *T)
         return;
     }
     pos(T->root);
+}
+
+void desenha_arvore_horiz(Node *node, int depth, char *path, int direita)
+{
+    // stopping conditiondepth
+    if (node == NULL)
+        return;
+
+    // increase spacing
+    depth++;
+
+    // start with direita no
+    desenha_arvore_horiz(node->right, depth, path, 1);
+
+    // set | draw map
+    path[depth-2] = 0;
+
+    if(direita)
+        path[depth-2] = 1;
+
+    if(node->left)
+        path[depth-1] = 1;
+
+    // print root after spacing
+    printf("\n");
+
+    for(int i=0; i<depth-1; i++)
+    {
+      if(i == depth-2)
+          printf("+");
+      else if(path[i])
+          printf("|");
+      else
+          printf(" ");
+
+      for(int j=1; j<espaco; j++)
+      if(i < depth-2)
+          printf(" ");
+      else
+          printf("-");
+    }
+
+    printf("%d\n", node->val);
+
+    // vertical espacors below
+    for(int i=0; i<depth; i++)
+    {
+      if(path[i])
+          printf("|");
+      else
+          printf(" ");
+
+      for(int j=1; j<espaco; j++)
+          printf(" ");
+    }
+
+    // go to esquerda no
+    desenha_arvore_horiz(node->left, depth, path, 0);
+}
+
+void desenha_arvore(Node *T)
+{
+    char path[255] = {};
+
+    //initial depth is 0
+    desenha_arvore_horiz(T, 0, path, 0);
+}
+//void pre_order(Tree *T)
+void draw_tree(Tree *T)
+{
+    if(T->root == NULL){
+    //if(!tree_is_empty(T)){
+        puts("tree is empty");
+        return;
+    }
+    desenha_arvore(T->root);
 }
