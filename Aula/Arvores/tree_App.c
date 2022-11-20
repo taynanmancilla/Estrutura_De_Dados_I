@@ -5,7 +5,7 @@
 
 int main(){
 
-    int size, i;
+    int val, size, i;
     Tree *t = create_tree();
 
 /*
@@ -57,11 +57,16 @@ int main(){
                 break;
             case 2:
                 printf("Qual valor deseja remover?\n>: ");
-                scanf("%d", size);
+                scanf("%d", &size);
                 removeVal(t, size);
                 break;
             case 3:
-                
+                printf("Qual elemento deseja consultar?\n>: ");
+                scanf("%d", &size);
+                search(t, size);
+                break;
+            case 4:
+
                 break;
             case 5:
                 printf("PRE-ORDER:\n");
