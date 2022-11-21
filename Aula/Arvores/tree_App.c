@@ -5,7 +5,8 @@
 
 int main(){
 
-    int val, size, i;
+    int val, size, i=0, j=0, igual, vet[255];
+    int vetor[7] = {40, 20, 60, 10, 30, 50, 70};
     Tree *t = create_tree();
 
 /*
@@ -47,13 +48,29 @@ int main(){
 
         switch(op){
             case 1:
-                printf("Quantos elementos deseja gerar?\n>: ");
+                printf("Arvore Aleatoria(1) ou Exemplo de Arvore Simetrica (2)? >: ");
                 scanf("%d", &size);
-                srand(time(NULL));
-                for(i=0;i<size; i++){
-                    int v = rand()%100;
-                    insert(t, v);
+                if(size == 1){
+                    printf("Quantos elementos deseja gerar?\n>: ");
+                    scanf("%d", &size);
+                    do{
+                        vet[i] = rand()%100;
+                        igual = 0;
+                        for(j=0;j<i; j++){
+                            if(vet[j] == vet[i]) { igual = 1; }
+                        }
+                        if(igual == 0){ i++; }
+
+                    }while(i<size);
+                    for(i=0;i<size; i++){
+                       insert(t, vet[i]);
+                    }
+                }else{
+                    for(i=0;i<7; i++){
+                        insert(t, vetor[i]);
+                    }
                 }
+                
                 break;
             case 2:
                 printf("Qual valor deseja remover?\n>: ");
@@ -66,7 +83,7 @@ int main(){
                 search(t, size);
                 break;
             case 4:
-
+                arvore_simetrica(t);
                 break;
             case 5:
                 printf("PRE-ORDER:\n");

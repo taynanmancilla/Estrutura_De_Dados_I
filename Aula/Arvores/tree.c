@@ -2,6 +2,7 @@
 #include"tree.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 #define espaco 5
 
 typedef struct _tree{
@@ -46,8 +47,9 @@ void destroy_node(Node *node)
 void destroy_tree(Tree *T)
 {
     if(T->root == NULL){
-    //if(tree_is_empty(T)){
-        return;
+        fprintf(stderr, "Erro em DESTROY()\n");
+        fprintf(stderr, "Arvore is Empty!\n");
+        exit(EXIT_FAILURE);
     }
     destroy_node(T->root);
     free(T);
@@ -64,12 +66,15 @@ void add(Node *node, int val)
         }
         add(node->left, val);
     
-    }else{
+    }else if(node->val < val){
         if(node->right == NULL){
             node->right = n;
             return;
         }
         add(node->right, val);
+    }else{
+        fprintf(stderr, "Erro em ADD()\n");
+        fprintf(stderr, "Nao eh Possivel Inserir (%d) Numeros Repetidos!\n", val);
     }
 }
 void insert(Tree *T, int val)
@@ -83,6 +88,7 @@ void insert(Tree *T, int val)
     add(T->root, val);
     }
 }
+
 void consult(Node *node, int val)
 {
     if(node != NULL){
@@ -270,21 +276,65 @@ void desenha_arvore_horiz(Node *node, int depth, char *path, int direita)
     // go to esquerda no
     desenha_arvore_horiz(node->left, depth, path, 0);
 }
-
-void desenha_arvore(Node *T)
-{
-    char path[255] = {};
-
-    //initial depth is 0
-    desenha_arvore_horiz(T, 0, path, 0);
-}
-//void pre_order(Tree *T)
 void draw_tree(Tree *T)
 {
+    char path[255] = {};
     if(T->root == NULL){
     //if(!tree_is_empty(T)){
         puts("tree is empty");
         return;
     }
-    desenha_arvore(T->root);
+    //initial depth is 0
+    desenha_arvore_horiz(T->root, 0, path, 0);
+}
+
+int altura(Node *node)
+{
+    if(node == NULL){
+        return -1;
+    }else{
+        int esquerda = altura(node->left);
+        int direita = altura(node->right);
+        if(esquerda > direita){
+            return esquerda + 1;
+        }else{
+            return direita + 1;
+        }
+    }
+}
+int quantidade_Noh(Node *node)
+{
+    if(node == NULL){
+        return 0;
+    }else{
+        return 1 + quantidade_Noh(node->left) + quantidade_Noh(node->right);
+    }
+}
+
+// Função para verificar se a subárvore enraizada em `X` e `Y` se espelham
+bool isSymmetric(Node *X, Node *Y)
+{
+    // se ambas as árvores estiverem vazias
+    if (X == NULL && Y == NULL) {
+        return true;
+    }
+ 
+    // retorna verdadeiro se
+    // 1. Ambas as árvores não são vazias e
+    // 2. A subárvore esquerda é o espelho da subárvore direita e
+    // 3. A subárvore direita é o espelho da subárvore esquerda
+    return (X != NULL && Y != NULL) && isSymmetric(X->left, Y->right) && isSymmetric(X->right, Y->left);
+}
+bool Symmetric(Node* root)
+{
+    if (root == NULL) {
+        return true;
+    }
+ 
+    return isSymmetric(root->left, root->right); // Retorna True se as subarvores da esquerda e direite sao espelhadas
+}
+void arvore_simetrica(Tree *T)
+{
+    bool v = Symmetric(T->root);
+    printf("%s\n", v?"Arvore SIMETRICA":"Arvore NAO SIMETRICA");
 }
