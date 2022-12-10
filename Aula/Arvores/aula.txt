@@ -28,3 +28,9 @@ In:
 
 Pos:
     O M J P Q I E F C B A H
+
+Prova
+    Calcular Altura
+    Trocar elemento da esquerda pra Direita
+    Simetria
+    Alterar estrutura da arvore para se parecer com lista circular
